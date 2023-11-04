@@ -1,42 +1,17 @@
-import { notFound } from "next/navigation";
+"use client";
 
-const fetchTodo = async () => {
-    const res = await fetch("https://graphql.datocms.com/", {
-        next: { revalidate: 60 },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-            query: "{ allReportazZChrztus { img { id url } } }",
-        }),
-    });
-    const datocms = await res.json();
-    return datocms;
-};
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
-export default async function ReportazChrzestPage() {
-    const datocmsResponse = await fetchTodo();
+import { gql } from "@apollo/client";
 
-    if (!datocmsResponse) return notFound();
+const query = gql`
+    query Now {
+        now(id: "1")
+    }
+`;
 
-    const photos = datocmsResponse.data.allReportazZChrztus;
+export default function Page() {
+    const { data } = useSuspenseQuery(query);
 
-    return (
-        <div className="flex flex-wrap ml-3 mt-4">
-            {photos.map((photoCollection) =>
-                photoCollection.img.map((photo) => (
-                    <img
-                        className="p-1 object-cover h-72 opacityAnimation"
-                        height={250}
-                        width={260}
-                        key={photo.id}
-                        src={photo.url}
-                    />
-                ))
-            )}
-        </div>
-    );
+    return <main>{data.now}</main>;
 }
