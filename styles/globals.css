@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-main {
+    background-color: #9b0303;
+    font-size: 13px;
+    transition: background-color 0.3s;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-main:hover {
+    background-color: #292d31;
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+.image-scaleAnim {
+    position: relative;
+    overflow: hidden;
+    animation: scaleAnimation 10s ease-in-out alternate-reverse infinite;
+}
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.opacityAnimation {
+    position: relative;
+    animation: opacityAnimation 0.4s ease-in-out;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgb(145, 10, 10);
+    border-radius: 7%;
+}

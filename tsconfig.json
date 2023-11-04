@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": false,
+        "noEmit": true,
+        "incremental": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
+    },
+    "include": [
+        "next-env.d.ts",
+        ".next/types/**/*.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "app/Footer.js",
+        "app/Header.js",
+        "app/layout.jsx",
+        "app/loading.js",
+        "app/not-found.js",
+        "app/fotografia/18-urodziny/page.js",
+        "app/fotografia/fotografia-slubna/page.js",
+        "app/fotografia/Categories.js",
+        "app/fotografia/layout.js"
+, "app/fotografia/page.js", "app/oferta/page.js", "app/fotografia/reportaz-z-chrztu/page.js", "app/todos/layout.js", "app/todos/page.js", "app/todos/TodosList.js"    ],
+    "exclude": ["node_modules"]
+}
