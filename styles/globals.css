@@ -17,6 +17,17 @@
     background-color: #292d31;
 }
 
+#modal {
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-image {
+    max-height: 80vh;
+    max-width: 80vw;
+    cursor: pointer;
+}
+
 @keyframes scaleAnimation {
     0% {
         transform: scale(1);

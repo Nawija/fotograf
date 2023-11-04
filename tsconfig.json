@@ -28,7 +28,7 @@
         "app/layout.jsx",
         "app/loading.js",
         "app/not-found.js",
-        "app/fotografia/18-urodziny/page.js",
+        "app/fotografia/18-urodziny/page.jsx",
         "app/fotografia/fotografia-slubna/page.js",
         "app/fotografia/Categories.js",
         "app/fotografia/layout.js"
