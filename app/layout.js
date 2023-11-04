@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
                 <link rel="icon" href="../images/fav.jpg" />
             </head>
             <body className={inter.className}>
-                <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-700/20 to-white/0 w-full lg:h-[50vh] -z-50" />
+                <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-500/20 to-white/0 w-full lg:h-[50vh] -z-50" />
                 <Header />
                 <main className="mt-20">{children}</main>
                 <Footer />

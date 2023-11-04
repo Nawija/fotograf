@@ -2,9 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Header() {
     const pathName = usePathname();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     const links = [
         { path: "/", label: "Start" },
         { path: "/o-mnie", label: "O Mnie" },
@@ -12,12 +31,13 @@ export default function Header() {
         { path: "/oferta", label: "Oferta" },
         { path: "/kontakt", label: "Kontakt" },
     ];
+
     return (
         <header
-            className={`text-gray-800 p-5 mb-4 fixed top-0 w-full z-50 ${
-                pathName === "/" || "/oferta"
+            className={`text-gray-800 p-5 mb-4 fixed top-0 w-full z-50 transition-colors duration-300 ${
+                (pathName === "/" || pathName === "/oferta") && !isScrolled
                     ? ""
-                    : "shadow-lg shadow-gray-200/40"
+                    : "bg-gray-100 shadow-lg"
             }`}
         >
             <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
@@ -25,7 +45,16 @@ export default function Header() {
                     href="/"
                     className="flex font-medium items-center justify-center text-gray-900"
                 >
-                    <span className="ml-1 font-semibold">JAREK OLSZEWSKI</span>
+                    <span
+                        className={`ml-1 font-semibold transition-transform duration-300 ${
+                            (pathName === "/" || pathName === "/oferta") &&
+                            !isScrolled
+                                ? "scale-125"
+                                : "scale-100"
+                        }`}
+                    >
+                        JAREK OLSZEWSKI
+                    </span>
                 </Link>
                 <button
                     aria-label="Menu"

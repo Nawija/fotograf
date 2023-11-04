@@ -25,7 +25,7 @@ export default async function ReportazChrzestPage() {
     const photos = datocmsResponse.data.allReportazZChrztus;
 
     return (
-        <div className="flex flex-wrap ml-3">
+        <div className="flex flex-wrap ml-3 mt-4">
             {photos.map((photoCollection) =>
                 photoCollection.img.map((photo) => (
                     <img

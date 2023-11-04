@@ -40,7 +40,7 @@
 }
 .opacityAnimation {
     position: relative;
-    animation: opacityAnimation 0.4s ease-in-out;
+    animation: opacityAnimation 0.3s ease-in-out;
 }
 
 .overflow-y-auto::-webkit-scrollbar {
