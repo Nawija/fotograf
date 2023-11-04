@@ -1,43 +1,15 @@
-import { notFound } from "next/navigation";
-import { useEffect, useState } from "react";
+"use client";
 
-const fetchTodo = async () => {
-    const res = await fetch("https://graphql.datocms.com/", {
-        next: { revalidate: 60 },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-            query: "{ allReportazZChrztus { img { id url } } }",
-        }),
-    });
-    const datocms = await res.json();
-    return datocms;
-};
+import { useQuery, gql } from "@apollo/client";
+import { getClient } from "@apollo/client";
 
-export default async function ReportazChrzestPage() {
-    const [results, setResults] = useState([]);
-    const controller = new AbortController();
+const GET_BOOKS = gql`
+allReportazZChrztus { img { id url } } ",
+`;
 
-    useEffect(() => {
-        async function getData() {
-            const res = await fetch("https://graphql.datocms.com/", {
-                next: { revalidate: 60 },
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-                },
-                body: JSON.stringify({
-                    query: "{ allReportazZChrztus { img { id url } } }",
-                }),
-            });
-        }
-    });
+function BookList() {
+    const client = getClient();
+    const { loading, data } = useQuery(GET_BOOKS, { client });
 
-    return <>xxxx</>;
+    if (loading) return <p>loading...</p>;
 }

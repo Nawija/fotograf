@@ -45,7 +45,7 @@ export default function Header() {
                     href="/"
                     className="flex font-medium items-center justify-center text-gray-900"
                 >
-                    <span
+                    <p
                         className={`ml-1 font-semibold transition-transform duration-300 ${
                             (pathName === "/" || pathName === "/oferta") &&
                             !isScrolled
@@ -54,7 +54,7 @@ export default function Header() {
                         }`}
                     >
                         JAREK OLSZEWSKI
-                    </span>
+                    </p>
                 </Link>
                 <button
                     aria-label="Menu"
@@ -68,7 +68,7 @@ export default function Header() {
                     {links.map((link) => (
                         <li
                             key={link.path}
-                            className={`hover:text-red-500 transition-colors ${
+                            className={`hover:text-red-500 transition-colors font-semibold ${
                                 pathName === link.path ? "text-red-600 " : ""
                             }`}
                         >
