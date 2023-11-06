@@ -68,7 +68,7 @@ export default function Header() {
                     {links.map((link) => (
                         <li
                             key={link.path}
-                            className={`hover:text-red-500 transition-colors font-semibold ${
+                            className={`hover:text-red-500 transition-colors font-medium ${
                                 pathName === link.path ? "text-red-600 " : ""
                             }`}
                         >

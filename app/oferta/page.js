@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import HeroImg from "../../images/jarek-olszewski.jpg";
+import Link from "next/link";
 
 export default function OfertaPage() {
     const initialValues = Array.from({ length: 10 }, () => null);
@@ -27,11 +29,11 @@ export default function OfertaPage() {
         <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation">
             <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.5rem]">
                 <Image src={HeroImg} />
-                <div className="absolute right-1/3 top-1/2 text-lg font-semibold">
+                <div className="absolute right-1/4 top-1/2 text-4xl font-light">
                     <p>Wypełnij Formularz</p>
-                    <p>lub</p>
+                    <p className=" text-red-600">lub</p>
                     <p>Zadzwoń</p>
-                    <p>570750007</p>
+                    <Link href="tel:570750307">570750307</Link>
                 </div>
             </div>
             <form
@@ -42,7 +44,7 @@ export default function OfertaPage() {
             >
                 <div className="mb-2 mt-2">
                     <p className="font-semibold mb-1">
-                        Typ strony internetowej
+                        Jakiej usługi potrzebujesz?
                     </p>
                     <div className="ml-2 py-2 flex flex-col">
                         <label>
@@ -50,11 +52,11 @@ export default function OfertaPage() {
                                 className="mr-2 scale-110 cursor-pointer"
                                 type="radio"
                                 name="PageType"
-                                value="1400"
-                                checked={values[0] === 1400}
+                                value="2400"
+                                checked={values[0] === 2400}
                                 onChange={(e) => handleRadioChange(e, 0)}
                             />
-                            Multi Page
+                            Fotograf ślubny
                         </label>
 
                         <label>
@@ -66,7 +68,19 @@ export default function OfertaPage() {
                                 checked={values[0] === 900}
                                 onChange={(e) => handleRadioChange(e, 0)}
                             />
-                            Landing Page
+                            Reportaz Chrztu
+                        </label>
+
+                        <label>
+                            <input
+                                className="mr-2 scale-110"
+                                type="radio"
+                                name="PageType"
+                                value="500"
+                                checked={values[0] === 500}
+                                onChange={(e) => handleRadioChange(e, 0)}
+                            />
+                            Sesja indywidualna
                         </label>
 
                         <label>
@@ -78,13 +92,13 @@ export default function OfertaPage() {
                                 checked={values[0] === 700}
                                 onChange={(e) => handleRadioChange(e, 0)}
                             />
-                            Blog
+                            Studniówka
                         </label>
                     </div>
                 </div>
                 <div className="flex flex-col items-start justify-start px-1 py-3">
                     <label className="font-semibold mb-1" htmlFor="t1">
-                        Opisz swoją firmę
+                        Opisz swoją wizję
                     </label>
                     <textarea
                         className="mr-2 w-full px-4 py-3 h-24 rounded-lg border"
