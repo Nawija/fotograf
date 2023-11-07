@@ -29,7 +29,8 @@ export default function Categories() {
                     key={categoriesLink.path}
                     href={`/fotografia/${categoriesLink.path}`}
                     className={`transition-colors p-1 ${
-                        pathname == `/fotografia/${categoriesLink.path}`
+                        pathname ===
+                        `/fotografia/${categoriesLink.path}`
                             ? "text-red-600 underline underline-offset-2"
                             : "hover:text-red-600"
                     }`}
