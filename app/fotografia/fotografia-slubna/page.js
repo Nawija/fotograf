@@ -1,28 +1,12 @@
 import { notFound } from "next/navigation";
-
-const fetchTodo = async () => {
-    const res = await fetch("https://graphql.datocms.com/", {
-        next: { revalidate: 60 },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-            query: "{ allReportazZChrztus { img { id url } } }",
-        }),
-    });
-    const datocms = await res.json();
-    return datocms;
-};
+import fetchPhotoDatoCms from "../../../lib/fetchPhotoDatoCms";
+import Link from "next/link";
 
 export default async function ReportazChrzestPage() {
-    const datocmsResponse = await fetchTodo();
+    const datoCmsRes = await fetchPhotoDatoCms();
+    if (!datoCmsRes) return notFound();
 
-    if (!datocmsResponse) return notFound();
-
-    const photos = datocmsResponse.data.allReportazZChrztus;
+    const photos = datoCmsRes.data.allReportazZChrztus;
 
     const LinkMenu =
         "bg-gray-500/80 rounded-xl text-[12.5px] font-medium py-1.5 px-3 text-white hover:bg-gray-500 transition-colors";
@@ -36,7 +20,10 @@ export default async function ReportazChrzestPage() {
             <div className="flex flex-wrap ">
                 {photos.map((photoCollection) =>
                     photoCollection.img.map((photo) => (
-                        <div className="relative m-3 group transition-all duration-200 hover:scale-[1.02] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md">
+                        <Link
+                            href={`/fotografia/fotografia-slubna/${photo.id}`}
+                            className="relative m-3 group transition-all duration-200 hover:scale-[1.02] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md"
+                        >
                             <img
                                 className="object-cover h-72 opacityAnimation"
                                 width={230}
@@ -59,7 +46,7 @@ export default async function ReportazChrzestPage() {
                                     />
                                 </svg>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 )}
             </div>
