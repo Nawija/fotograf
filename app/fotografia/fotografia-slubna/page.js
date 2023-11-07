@@ -18,6 +18,7 @@ export default async function ReportazChrzestPage() {
                 <button className={LinkMenu}>Pobierz Tylko Ulubione</button>
             </div>
             <div className="flex flex-wrap ">
+                {console.log(photos)}
                 {photos.map((photoCollection) =>
                     photoCollection.img.map((photo) => (
                         <Link
