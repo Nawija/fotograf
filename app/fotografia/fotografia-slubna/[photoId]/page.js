@@ -5,7 +5,7 @@ import CloseBtn from "./CloseBtn";
 
 export const dynamicParams = true;
 
-const fetchPhotoDatoCms = async (photoId) => {
+const fetchPhotoDatoCms = async () => {
     const res = await fetch("https://graphql.datocms.com/", {
         next: { revalidate: 60 },
         method: "POST",
@@ -35,14 +35,13 @@ export default async function PhotoPage({ params: { photoId } }) {
     const nextPhotoId = photos[nextPhotoIndex].id;
     const prevPhotoId = photos[prevPhotoIndex].id;
 
-    const arrowBtn = "p-2 bg-white font-medium text-black absolute top-1/2";
+    const arrowBtn = "p-2 border font-semibold rounded-lg bg-gray-800 text-white absolute top-1/2";
 
     return (
-        <div className="fixed p-2 flex items-center justify-center top-0 left-0 z-50 w-full h-screen">
-            <div className="bg-black/80 absolute w-full h-full top-0 left-0 -z-10" />
-            <div className=" absolute top-2 right-4">
+        <div className="p-2 flex items-center justify-center top-0 left-0 h-[90vh] relative">
+            {/* <div className=" absolute top-2 right-4">
                 <CloseBtn />
-            </div>
+            </div> */}
 
             <Link
                 href={`/fotografia/fotografia-slubna/${nextPhotoId}`}
@@ -54,7 +53,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                 >
                     <path
                         strokeLinecap="round"
@@ -74,7 +73,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                 >
                     <path
                         strokeLinecap="round"
