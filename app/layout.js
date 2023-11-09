@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
             <body className={inter.className}>
                 <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-500/20 to-white/0 w-full lg:h-[50vh] -z-50" />
                 <Header />
-                <main className="mt-20 px-2">{children}</main>
+                <main className="mt-20">{children}</main>
                 <Footer />
             </body>
         </html>
