@@ -2,8 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function Categories() {
+    const [fixedPosition, setFixedPosition] = useState(null);
+
+    const addFixedPosition = () => {
+        if (window.scrollY >= 50) {
+            setFixedPosition(true);
+        } else {
+            setFixedPosition(false);
+        }
+    };
+
+    useEffect(() => {
+        addFixedPosition();
+        window.addEventListener("scroll", addFixedPosition);
+    });
+
     const pathname = usePathname();
     const categoriesLinks = [
         { path: "fotografia-slubna", label: "Fotografia ślubna" },
@@ -23,21 +39,28 @@ export default function Categories() {
         { path: "zdjęcia-produktowe", label: "Zdjęcia produktowe" },
     ];
     return (
-        <div className="flex flex-col pr-10 py-4 text-start h-screen overflow-y-auto border-r-2">
-            {categoriesLinks.map((categoriesLink) => (
-                <Link
-                    key={categoriesLink.path}
-                    href={`/fotografia/${categoriesLink.path}`}
-                    className={`transition-colors p-1 ${
-                        pathname ===
-                        `/fotografia/${categoriesLink.path}`
-                            ? "text-red-600 underline underline-offset-2"
-                            : "hover:text-red-600"
-                    }`}
-                >
-                    {categoriesLink.label}
-                </Link>
-            ))}
+        <div
+            className={`flex flex-col pr-10 mt-12 text-start h-full overflow-y-auto w-56 border-r-2 transition-all`}
+        >
+            <div
+                className={`flex flex-col ${
+                    fixedPosition ? "fixed w-56 h-full top-20" : ""
+                }`}
+            >
+                {categoriesLinks.map((categoriesLink) => (
+                    <Link
+                        key={categoriesLink.path}
+                        href={`/fotografia/${categoriesLink.path}`}
+                        className={`transition-colors p-1 mt-0.5 ${
+                            pathname === `/fotografia/${categoriesLink.path}`
+                                ? "text-red-600 underline underline-offset-2"
+                                : "hover:text-red-600"
+                        }`}
+                    >
+                        {categoriesLink.label}
+                    </Link>
+                ))}
+            </div>
         </div>
     );
 }
