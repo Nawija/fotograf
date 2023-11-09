@@ -4,9 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function Categories() {
+export default function Categories({ showMenu, setShowMenu }) {
     const [fixedPosition, setFixedPosition] = useState(null);
-    const [showMenu, setShowMenu] = useState(false);
 
     function handleMenu() {
         setShowMenu(!showMenu);
@@ -47,7 +46,7 @@ export default function Categories() {
         <div
             className={`flex items-center justify-start flex-col mt-12 text-start h-full lg:pl-0 pl-2 text-sm border-r-2 transition-all  relative ${
                 showMenu
-                    ? "w-10 -translate-x-[200%]"
+                    ? "-translate-x-[200%]"
                     : "w-48 lg:w-52 translate-x-0 "
             }`}
         >

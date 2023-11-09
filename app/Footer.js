@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="text-gray-800 bg-gray-200 mt-20">
+        <footer className="text-gray-800 bg-gray-200">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <Link href="/" className="flex font-medium items-center md:justify-start justify-center text-gray-900">
                     <svg

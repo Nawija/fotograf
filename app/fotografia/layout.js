@@ -1,12 +1,22 @@
+"use client";
+import { useState } from "react";
 import Categories from "./Categories";
 
 export default function RootLayout({ children }) {
+    const [showMenu, setShowMenu] = useState(false);
+
     return (
         <main className="flex max-w-screen-2xl mx-auto">
             <div>
-                <Categories />
+                <Categories showMenu={showMenu} setShowMenu={setShowMenu} />
             </div>
-            <div className="flex-1">{children}</div>
+            <div
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                className="flex-1"
+            >
+                {children}
+            </div>
         </main>
     );
 }

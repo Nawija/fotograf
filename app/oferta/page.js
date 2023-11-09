@@ -26,7 +26,7 @@ export default function OfertaPage() {
     };
 
     return (
-        <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation">
+        <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation mb-20">
             <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.1rem]">
                 <Image src={HeroImg} />
                 <div className="absolute right-1/3 lg:right-1/4 top-1/2 text-base text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-light font-semibold">
