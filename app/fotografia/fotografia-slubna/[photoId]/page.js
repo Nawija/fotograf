@@ -21,7 +21,7 @@ const fetchPhotoDatoCms = async () => {
     return datoCms;
 };
 
-export default async function PhotoPage({ showMenu, params: { photoId } }) {
+export default async function PhotoPage({ params: { photoId } }) {
     const datoCms = await fetchPhotoDatoCms(photoId);
     const photos = datoCms.data.reportazZChrztu.img;
     console.log(datoCms.data.reportazZChrztu);
@@ -36,14 +36,12 @@ export default async function PhotoPage({ showMenu, params: { photoId } }) {
     const prevPhotoId = photos[prevPhotoIndex].id;
 
     const arrowBtn =
-        "p-2 border font-semibold rounded-lg bg-gray-800 text-white absolute top-1/2";
+        "p-2 border font-semibold rounded-lg bg-gray-700 text-white absolute top-1/2 hover:bg-gray-600 transition-colors";
 
     return (
         <div className="flex items-start justify-center">
             <div
-                className={`p-2 flex items-center justify-center top-0 left-0 h-[90vh] relative ${
-                    showMenu ? "bg-red-500" : ""
-                }`}
+                className={`p-2 flex items-center justify-center text-center mx-auto top-0 left-0 h-[90vh] w-full relative`}
             >
                 <Link
                     href={`/fotografia/fotografia-slubna/${nextPhotoId}`}
@@ -64,7 +62,7 @@ export default async function PhotoPage({ showMenu, params: { photoId } }) {
                         />
                     </svg>
                 </Link>
-                <div className="w-full h-[80vh] relative">
+                <div className="w-full h-[80vh] relative flex items-center justify-center -z-10">
                     <img
                         className="w-auto h-full object-fill"
                         src={photos[photoIndex].url}
@@ -91,7 +89,7 @@ export default async function PhotoPage({ showMenu, params: { photoId } }) {
                     </svg>
                 </Link>
             </div>
-            <div className="p-10 flex items-center justify-end w-52 bg-white">
+            <div className="p-2 flex items-center justify-start border w-52 mt-12 ml-2">
                 <p>Polobione</p>
             </div>
         </div>
