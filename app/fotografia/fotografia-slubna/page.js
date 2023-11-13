@@ -12,23 +12,22 @@ export default async function ReportazChrzestPage() {
         "bg-gray-500/80 rounded-xl text-[12.5px] font-medium py-1.5 px-3 text-white hover:bg-gray-500 transition-colors";
 
     return (
-        <div className="ml-3 mt-3">
-            <div className="text-end mr-3 lg:mr-12 space-x-3 mb-2">
+        <div className="ml-3 mt-2 mb-20">
+            <div className="text-end mr-3 lg:mr-24 space-x-3 mb-2">
                 <button className={LinkMenu}>Pobierz</button>
             </div>
-            <div className="flex flex-wrap ">
+            <div className="flex flex-wrap">
                 {photos.map((photo) => (
                     <Link
                         href={`/fotografia/fotografia-slubna/${photo.id}`}
-                        className="relative m-3 group transition-all duration-200 hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md"
+                        className="relative m-3 group transition-all h-56 w-56 duration-200 hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md"
                     >
                         <img
-                            className="object-cover h-96 opacityAnimation"
-                            width={400}
+                            className="object-cover opacityAnimation h-full w-full"
                             key={photo.id}
                             src={photo.url}
                         />
-                        <div className="opacity-0 group-hover:opacity-100 absolute h-full w-full top-0 left-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-all duration-500 delay-100">
+                        <div className="opacity-0 group-hover:opacity-100 absolute h-full w-full top-0 left-0 bg-gradient-to-b to-black/50 via-transparent from-transparent transition-all duration-500 delay-100">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"

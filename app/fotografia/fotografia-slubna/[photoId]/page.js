@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import MenuLeftBar from './MenuLeftBar'
 
 export const dynamicParams = true;
 
@@ -24,7 +24,6 @@ const fetchPhotoDatoCms = async () => {
 export default async function PhotoPage({ params: { photoId } }) {
     const datoCms = await fetchPhotoDatoCms(photoId);
     const photos = datoCms.data.reportazZChrztu.img;
-    console.log(datoCms.data.reportazZChrztu);
     const photoIndex = photos.findIndex((photo) => photo.id === photoId);
 
     if (photoIndex === -1) {
@@ -41,11 +40,11 @@ export default async function PhotoPage({ params: { photoId } }) {
     return (
         <div className="flex items-start justify-center">
             <div
-                className={`p-2 flex items-center justify-center text-center mx-auto top-0 left-0 h-[90vh] w-full relative`}
+                className={`p-10 flex items-center justify-center text-center mx-auto top-0 left-0 h-[90vh] w-full relative`}
             >
                 <Link
                     href={`/fotografia/fotografia-slubna/${nextPhotoId}`}
-                    className={`${arrowBtn} lg:left-2 left-0`}
+                    className={`${arrowBtn} lg:left-6 left-0`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +70,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                 </div>
                 <Link
                     href={`/fotografia/fotografia-slubna/${prevPhotoId}`}
-                    className={`${arrowBtn} lg:right-2 right-0`}
+                    className={`${arrowBtn} lg:right-6 right-0`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -88,10 +87,8 @@ export default async function PhotoPage({ params: { photoId } }) {
                         />
                     </svg>
                 </Link>
-            </div>
-            <div className="p-2 flex items-center justify-start border w-52 mt-12 ml-2">
-                <p>Polobione</p>
-            </div>
+            </div>         
+            <MenuLeftBar />
         </div>
     );
 }
