@@ -27,25 +27,24 @@ export default function OfertaPage() {
 
     return (
         <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation mb-20">
-            <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.1rem]">
+            <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.5rem]">
                 <Image src={HeroImg} />
-                <div className="absolute right-1/3 lg:right-1/4 top-1/2 text-base text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-light font-semibold">
+                <div className="absolute left-1/2 lg:right-1/4 lg:top-1/2 top-[70%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-light font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
                     <p>Wypełnij Formularz</p>
                     <p className=" lg:text-red-600">lub</p>
                     <p className="mb-6">Zadzwoń</p>
                     <div className="flex items-center justify-start">
                         <Link
                             href="tel:570750307"
-                            className="border-2 py-2 flex items-center justify-center px-4 rounded-lg shadow-2xl font-medium text-lg w-max"
+                            className=" py-2.5 border-emerald-600 flex items-center justify-center px-4 rounded-2xl shadow-2xl shadow-emerald-500/50 font-medium text-sm lg:text-lg w-max bg-gradient-to-b from-emerald-700 to-emerald-800"
                         >
                             {" "}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                strokeWidth={1}
                                 stroke="currentColor"
-                                className="w-6 h-6 mr-3 text-red-600 fill-red-600"
+                                className="w-5 h-5 mr-3 fill-green-500 text-green-500"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -53,22 +52,8 @@ export default function OfertaPage() {
                                     d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0l-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 014.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 00-.38 1.21 12.035 12.035 0 007.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 011.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 01-2.25 2.25h-2.25z"
                                 />
                             </svg>
-                            570-750-307
+                            (+48) 570 750 307
                         </Link>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6 rotate-90"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
-                            />
-                        </svg>
                     </div>
                 </div>
             </div>
@@ -178,119 +163,65 @@ export default function OfertaPage() {
                 </div>
 
                 <div className="mb-2 mt-2">
-                    <p className="font-semibold mb-1">Posiadasz domenę?</p>
+                    <p className="font-semibold mb-1">Wydrukowanie Zdjęć?</p>
                     <div className="ml-2 py-2 flex flex-col">
                         <label>
                             <input
                                 className="mr-2 scale-110 cursor-pointer"
+                                type="radio"
+                                name="Domena"
+                                value="70"
+                                checked={values[1] === 70}
+                                onChange={(e) => handleRadioChange(e, 1)}
+                            />
+                            Tak
+                        </label>
+
+                        <label>
+                            <input
+                                className="mr-2 scale-110"
                                 type="radio"
                                 name="Domena"
                                 value="0"
                                 checked={values[1] === 0}
                                 onChange={(e) => handleRadioChange(e, 1)}
                             />
-                            Tak
-                        </label>
-
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="radio"
-                                name="Domena"
-                                value="50"
-                                checked={values[1] === 50}
-                                onChange={(e) => handleRadioChange(e, 1)}
-                            />
                             Nie
                         </label>
                     </div>
                 </div>
 
                 <div className="mb-2 mt-2">
-                    <p className="font-semibold mb-1">Posiadasz Hosting?</p>
+                    <p className="font-semibold mb-1">Album z zdjęciami?</p>
                     <div className="ml-2 py-2 flex flex-col">
                         <label>
                             <input
                                 className="mr-2 scale-110 cursor-pointer"
+                                type="radio"
+                                name="Hosting"
+                                value="200"
+                                checked={values[2] === 200}
+                                onChange={(e) => handleRadioChange(e, 2)}
+                            />
+                            Tak
+                        </label>
+
+                        <label>
+                            <input
+                                className="mr-2 scale-110"
                                 type="radio"
                                 name="Hosting"
                                 value="0"
                                 checked={values[2] === 0}
                                 onChange={(e) => handleRadioChange(e, 2)}
                             />
-                            Tak
-                        </label>
-
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="radio"
-                                name="Hosting"
-                                value="300"
-                                checked={values[2] === 300}
-                                onChange={(e) => handleRadioChange(e, 2)}
-                            />
                             Nie
                         </label>
                     </div>
                 </div>
 
                 <div className="mb-2 mt-2">
-                    <p className="font-semibold mb-1">
-                        Ile podstron ma posiadać strona internetowa?
-                    </p>
-
-                    <div className="ml-2 py-2 flex flex-col">
-                        <label>
-                            <input
-                                className="mr-2 scale-110 cursor-pointer"
-                                type="radio"
-                                name="Podstrona"
-                                value="0"
-                                checked={values[3] === 0}
-                                onChange={(e) => handleRadioChange(e, 3)}
-                            />
-                            1-3 podstron
-                        </label>
-
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="radio"
-                                name="Podstrona"
-                                value="300"
-                                checked={values[3] === 300}
-                                onChange={(e) => handleRadioChange(e, 3)}
-                            />
-                            4-6 podstron
-                        </label>
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="radio"
-                                name="Podstrona"
-                                value="600"
-                                checked={values[3] === 600}
-                                onChange={(e) => handleRadioChange(e, 3)}
-                            />
-                            7-9 podstron
-                        </label>
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="radio"
-                                name="Podstrona"
-                                value="900"
-                                checked={values[3] === 900}
-                                onChange={(e) => handleRadioChange(e, 3)}
-                            />
-                            Więcej
-                        </label>
-                    </div>
-                </div>
-
-                <div className="mb-2 mt-2">
-                    <p className="font-semibold mb-1">Funkcje</p>
+                    <p className="font-semibold mb-1">Opcje dodatkowe:</p>
                     <div className="ml-2 py-2 flex flex-col">
                         <label>
                             <input
@@ -301,7 +232,7 @@ export default function OfertaPage() {
                                 checked={values[4] === 100}
                                 onChange={(e) => handleCheckboxChange(e, 4)}
                             />
-                            Sekcja Blog
+                            Prezent niespodzianka
                         </label>
 
                         <label>
@@ -313,7 +244,7 @@ export default function OfertaPage() {
                                 checked={values[5] === 100}
                                 onChange={(e) => handleCheckboxChange(e, 5)}
                             />
-                            Sekcja News
+                            Dodatkowye ujęcia
                         </label>
                         <label>
                             <input
@@ -324,7 +255,7 @@ export default function OfertaPage() {
                                 checked={values[6] === 50}
                                 onChange={(e) => handleCheckboxChange(e, 6)}
                             />
-                            Formularz Kontaktowy
+                            Zdjęcia w wersji B&W i kolorowej
                         </label>
                         <label>
                             <input
@@ -335,69 +266,8 @@ export default function OfertaPage() {
                                 checked={values[7] === 50}
                                 onChange={(e) => handleCheckboxChange(e, 7)}
                             />
-                            Mapa Google 2D/3D
+                            Licencja na wykorzystanie zdjęć w celu komercyjnym
                         </label>
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="checkbox"
-                                name="Kalkulator wyceny"
-                                value="150"
-                                checked={values[8] === 150}
-                                onChange={(e) => handleCheckboxChange(e, 8)}
-                            />
-                            Kalkulator wyceny
-                        </label>
-                        <label>
-                            <input
-                                className="mr-2 scale-110"
-                                type="checkbox"
-                                name="Chat"
-                                value="50"
-                                checked={values[9] === 50}
-                                onChange={(e) => handleCheckboxChange(e, 9)}
-                            />
-                            Chat
-                        </label>
-                    </div>
-                    <div className="mb-2 mt-2">
-                        <p className="font-semibold mb-1">
-                            Kto dostarczy treści?
-                        </p>
-                        <div className="ml-2 py-2 flex flex-col">
-                            <label>
-                                <input
-                                    className="mr-2 scale-110 cursor-pointer"
-                                    type="radio"
-                                    name="Zleceniodawca"
-                                    value="0"
-                                    checked={values[10] === 0}
-                                    onChange={(e) => handleRadioChange(e, 10)}
-                                />
-                                Zleceniodawca
-                            </label>
-
-                            <label>
-                                <input
-                                    className="mr-2 scale-110"
-                                    type="radio"
-                                    name="Wykonawca"
-                                    value="600"
-                                    checked={values[10] === 600}
-                                    onChange={(e) => handleRadioChange(e, 10)}
-                                />
-                                Wykonawca
-                            </label>
-
-                            <input
-                                checked
-                                className="hidden"
-                                type="radio"
-                                id="totalValue"
-                                value={totalValue}
-                                name="Suma"
-                            />
-                        </div>
                     </div>
                 </div>
 
