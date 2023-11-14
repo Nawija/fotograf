@@ -125,11 +125,10 @@ export default function Header() {
                 </div>
 
                 <div
-                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-60 bg-white shadow-2xl space-y-5 left-0 h-screen transition-transform ${
+                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
                         showMenu ? "translate-x-0" : "-translate-x-full"
                     }`}
                 >
-                    <p className={`transition-all delay-300 duration-700 absolute top-7 font-bold ${showMenu ? "opacity-100" : "opacity-0"}`}>JAREK OLSZEWSKI</p>
                     {links.map((link) => (
                         <li
                             key={link.path}

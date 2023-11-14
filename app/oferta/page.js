@@ -29,10 +29,10 @@ export default function OfertaPage() {
         <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation mb-20">
             <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.5rem]">
                 <Image src={HeroImg} />
-                <div className="absolute left-1/2 lg:right-1/4 lg:top-1/2 top-[70%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-light font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
+                <div className="absolute left-1/2 lg:right-1/4 lg:top-1/2 top-[73%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-light font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
                     <p>Wypełnij Formularz</p>
-                    <p className=" lg:text-red-600">lub</p>
-                    <p className="mb-6">Zadzwoń</p>
+                    <p className=" lg:text-red-600 -my-2">lub</p>
+                    <p className="mb-3">Zadzwoń</p>
                     <div className="flex items-center justify-start">
                         <Link
                             href="tel:570750307"
