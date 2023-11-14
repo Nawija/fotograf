@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <>
             <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative">
-                    <div className="lg:w-full w-80 h-1/2 rotate-45 rounded-xl bg-gradient-to-tr from-gray-400/90 absolute top-0 left-0 shadow-xl" />
+                    
                 <div className="flex justify-center  ">
                     <div className="flex flex-col items-center justify-center">
                         <div className="flex flex-col  max-w-7xl justify-center items-center space-y-3 w-full ">
@@ -39,8 +39,8 @@ export default function Home() {
                                         alt={heroImgAlt}
                                     />
                                 </div>
-                                <div className="flex flex-row lg:flex-col space-x-6 lg:space-y-6 items-center justify-center">
-                                    <div className="w-52 lg:w-40 h-40  overflow-hidden rounded-xl shadow-xl ">
+                                <div className="flex flex-row lg:flex-col space-x-3 lg:space-y-6 items-center justify-center">
+                                    <div className="w-40 lg:w-40 h-40 overflow-hidden rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
@@ -63,7 +63,7 @@ export default function Home() {
                                         />
                                     </div>
                                 </div>
-                                <div className="lg:w-60 w-64 h-96 hidden lg:flex overflow-hidden rounded-xl shadow-xl ">
+                                <div className="lg:w-60 w-52 h-96 hidden lg:flex overflow-hidden rounded-xl shadow-xl ">
                                     <Image
                                         loading="eager"
                                         className={ImgClass}
@@ -74,8 +74,8 @@ export default function Home() {
                                         alt={heroImgAlt}
                                     />
                                 </div>
-                                <div className="flex flex-row lg:flex-col space-x-4 lg:space-y-6 items-center justify-center ">
-                                    <div className="w lg:w-40 h-48  overflow-hidden rounded-xl shadow-xl ">
+                                <div className="flex flex-row lg:flex-col space-x-3 lg:space-y-6 items-center justify-center ">
+                                    <div className="w-40 lg:w-40 h-48  overflow-hidden rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}

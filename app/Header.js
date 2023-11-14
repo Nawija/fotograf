@@ -39,7 +39,7 @@ export default function Header() {
 
     return (
         <header
-            className={`text-gray-800 fixed top-0 w-full z-50 transition-colors duration-300 ${
+            className={`text-gray-800 fixed top-0 w-full overflow-hidden z-50 transition-colors duration-300 ${
                 (pathName === "/" || pathName === "/oferta") && !isScrolled
                     ? ""
                     : "bg-gray-100 shadow-lg"

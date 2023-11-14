@@ -17,10 +17,15 @@ export default function RootLayout({ children }) {
                 <title>Fotograf</title>
                 <link rel="icon" href="../images/fav.jpg" />
             </head>
-            <body className={inter.className}>
+            <body className={`${inter.className}`}>
                 <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-500/20 to-white/0 w-full lg:h-[50vh] -z-50" />
+                <div className="overflow-hidden w-full h-full">
+                    <div className="lg:w-full w-80 h-1/2 rotate-45 rounded-xl bg-gradient-to-tr from-gray-400/90 absolute top-0 left-0 shadow-xl -z-10" />
+                </div>
                 <Header />
-                <main className="mt-20 min-h-screen">{children}</main>
+                <main className="mt-20 min-h-screen overflow-hidden">
+                    {children}
+                </main>
                 <Footer />
             </body>
         </html>
