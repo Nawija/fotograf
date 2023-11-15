@@ -1,39 +1,36 @@
+// Import necessary libraries and components
 "use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { connectToDatabase } from "../../../lib/mongodb";
+import { useState, useEffect } from "react";
+import connectDB from "../../lib/mongodb";
 
 export default function Photo({ photos }) {
     const [clickedArray, setClickedArray] = useState(
         new Array(photos.length).fill(false)
     );
 
+    useEffect(() => {
+        connectDB();
+    }, []);
     const handleClick = async (index, photoId) => {
         try {
             const { db } = await connectToDatabase();
             const likesCollection = db.collection("likes");
-
-            // Odczytaj aktualną liczbę kliknięć (lub 0, jeśli nie istnieje)
             const photo = await likesCollection.findOne({ photoId });
             const currentLikes = photo ? photo.likes : 0;
-
-            // Zapisz informacje o kliknięciu w bazie danych
             await likesCollection.updateOne(
                 { photoId },
                 { $set: { photoId, likes: currentLikes + 1 } },
                 { upsert: true }
             );
 
-            // Zaktualizuj lokalny stan
             const newClickedArray = [...clickedArray];
             newClickedArray[index] = !newClickedArray[index];
             setClickedArray(newClickedArray);
         } catch (error) {
-            console.error("Błąd podczas wysyłania kliknięcia:", error);
+            console.error("Error while sending click:", error);
         }
     };
-
     return (
         <div className="flex flex-wrap">
             {photos.map((photo, index) => (
