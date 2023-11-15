@@ -37,12 +37,15 @@ export default function Header() {
         { path: "/kontakt", label: "Kontakt" },
     ];
 
+    const strefaKlientaLink = {
+        path: "/strefa-klienta",
+        label: "Strefa Klienta",
+    };
+
     return (
         <header
             className={`text-gray-800 fixed top-0 w-full overflow-hidden z-50 transition-colors duration-300 ${
-                (pathName === "/" || pathName === "/oferta") && !isScrolled
-                    ? ""
-                    : "bg-gray-100 shadow-lg"
+                pathName === "/" && !isScrolled ? "" : "bg-gray-100 shadow-lg"
             }`}
         >
             <div className="max-w-screen-2xl lg:p-5 px-6 py-3 mx-auto flex items-center justify-between">
@@ -52,8 +55,7 @@ export default function Header() {
                 >
                     <p
                         className={`ml-1 font-semibold transition-transform text-sm duration-300 ${
-                            (pathName === "/" || pathName === "/oferta") &&
-                            !isScrolled
+                            pathName === "/" && !isScrolled
                                 ? "scale-110"
                                 : "scale-100"
                         }`}
@@ -88,6 +90,7 @@ export default function Header() {
                         }`}
                     ></div>
                 </button>
+                {/* -------- Desctop -------- */}
                 <div className="items-center justify-center space-x-12 text-sm hidden lg:flex">
                     {links.map((link) => (
                         <li
@@ -103,10 +106,10 @@ export default function Header() {
                     ))}
 
                     <Link
-                        href="/todos"
+                        href={strefaKlientaLink.path}
                         className="btn-main flex items-center justify-center py-1.5 px-3"
                     >
-                        Strefa Klienta
+                        {strefaKlientaLink.label}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -124,6 +127,7 @@ export default function Header() {
                     </Link>
                 </div>
 
+                {/* -------- Mobile ------------- */}
                 <div
                     className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
                         showMenu ? "translate-x-0" : "-translate-x-full"
@@ -147,10 +151,10 @@ export default function Header() {
                     ))}
 
                     <Link
-                        href="/todos"
+                        href={strefaKlientaLink.path}
                         className="btn-main flex items-center justify-center py-1.5 px-3"
                     >
-                        Strefa Klienta
+                        {strefaKlientaLink.label}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
