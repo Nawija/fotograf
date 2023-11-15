@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import fetchPhotoDatoCms from "../../../lib/fetchPhotoDatoCms";
 
-import Photo from "./Photo";
+import Photo from "./Photo"
 
 export default async function ReportazChrzestPage({}) {
     const datoCmsRes = await fetchPhotoDatoCms();
