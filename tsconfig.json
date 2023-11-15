@@ -29,9 +29,15 @@
         "app/loading.js",
         "app/not-found.js",
         "app/fotografia/18-urodziny/page.jsx",
-        "app/fotografia/fotografia-slubna/page.js",
+        "app/fotografia-slubna/page.js",
         "app/fotografia/Categories.js",
-        "app/fotografia/layout.js"
-, "app/fotografia/page.js", "app/oferta/page.js", "app/fotografia/reportaz-z-chrztu/page.js", "app/todos/layout.js", "app/todos/page.js", "app/todos/TodosList.js"    ],
+        "app/fotografia/layout.js",
+        "app/fotografia/page.js",
+        "app/oferta/page.js",
+        "app/fotografia/reportaz-z-chrztu/page.js",
+        "app/todos/layout.js",
+        "app/todos/page.js",
+        "app/todos/TodosList.js"
+    ],
     "exclude": ["node_modules"]
 }

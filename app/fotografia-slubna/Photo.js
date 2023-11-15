@@ -1,46 +1,42 @@
-// Import necessary libraries and components
 "use client";
+
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import connectDB from "../../lib/mongodb";
+import { useState } from "react";
 
 export default function Photo({ photos }) {
     const [clickedArray, setClickedArray] = useState(
         new Array(photos.length).fill(false)
     );
+    const newClickedArray = [...clickedArray];
 
-    useEffect(() => {
-        connectDB();
-    }, []);
-    const handleClick = async (index, photoId) => {
-        try {
-            const { db } = await connectToDatabase();
-            const likesCollection = db.collection("likes");
-            const photo = await likesCollection.findOne({ photoId });
-            const currentLikes = photo ? photo.likes : 0;
-            await likesCollection.updateOne(
-                { photoId },
-                { $set: { photoId, likes: currentLikes + 1 } },
-                { upsert: true }
-            );
+    const handleClick = async (index) => {
+        newClickedArray[index] = !newClickedArray[index];
+        setClickedArray(newClickedArray);
+        console.log(newClickedArray);
 
-            const newClickedArray = [...clickedArray];
-            newClickedArray[index] = !newClickedArray[index];
-            setClickedArray(newClickedArray);
-        } catch (error) {
-            console.error("Error while sending click:", error);
-        }
+        const res = await fetch("api/fotografia-slubna", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                newClickedArray,
+            }),
+        });
+
+        const { msg } = res.json();
+        console.log(msg);
     };
+
     return (
         <div className="flex flex-wrap">
             {photos.map((photo, index) => (
                 <div
                     key={photo.id}
                     className={`relative m-3 group transition-all h-56 w-56 duration-200 hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
-                    onClick={() => handleClick(index, photo.id)}
                 >
                     <Link
-                        href={`/fotografia/fotografia-slubna/${photo.id}`}
+                        href={`/fotografia-slubna/${photo.id}`}
                         key={photo.id}
                     >
                         <img
@@ -56,10 +52,11 @@ export default function Photo({ photos }) {
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className={`w-7 h-7 absolute bottom-2 right-2 group-hover:opacity-100 opacity-0 transition-all  ${
+                        onClick={() => handleClick(index)}
+                        className={`w-9 h-9 p-1.5 absolute bottom-2 right-2 group-hover:opacity-100 opacity-0 transition-all duration-100 ${
                             clickedArray[index]
-                                ? "text-red-600 fill-red-600"
-                                : "text-white"
+                                ? "text-red-600 fill-red-500"
+                                : "text-gray-200"
                         }`}
                     >
                         <path

@@ -43,7 +43,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                 className={`p-10 flex items-center justify-center text-center mx-auto top-0 left-0 h-[90vh] w-full relative`}
             >
                 <Link
-                    href={`/fotografia/fotografia-slubna/${nextPhotoId}`}
+                    href={`/fotografia-slubna/${nextPhotoId}`}
                     className={`${arrowBtn} lg:left-6 left-0`}
                 >
                     <svg
@@ -69,7 +69,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                     />
                 </div>
                 <Link
-                    href={`/fotografia/fotografia-slubna/${prevPhotoId}`}
+                    href={`/fotografia-slubna/${prevPhotoId}`}
                     className={`${arrowBtn} lg:right-6 right-0`}
                 >
                     <svg

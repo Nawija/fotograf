@@ -32,7 +32,7 @@ export default function Header() {
     const links = [
         { path: "/", label: "Start" },
         { path: "/o-mnie", label: "O Mnie" },
-        { path: "/fotografia/fotografia-slubna", label: "Fotografia" },
+        { path: "/fotografia-slubna", label: "Fotografia" },
         { path: "/oferta", label: "Oferta" },
         { path: "/kontakt", label: "Kontakt" },
     ];
