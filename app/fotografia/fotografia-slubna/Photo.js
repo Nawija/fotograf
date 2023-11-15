@@ -2,21 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { getDatabase, ref, get, set } from "firebase/database";
-import { initializeApp } from "firebase/app";
-
-// Skonfiguruj Firebase zgodnie z danymi swojego projektu
-const firebaseConfig = {
-    apiKey: "4349f4a8ca168f8bc4c85bc6f4378a37ea936af5",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "likephoto-1a947",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    databaseURL: "YOUR_DATABASE_URL",
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
+import { connectToDatabase } from "../../../lib/mongodb";
 
 export default function Photo({ photos }) {
     const [clickedArray, setClickedArray] = useState(
@@ -25,15 +11,19 @@ export default function Photo({ photos }) {
 
     const handleClick = async (index, photoId) => {
         try {
-            const db = getDatabase(firebaseApp);
-            const likesRef = ref(db, `likes/${photoId}`);
+            const { db } = await connectToDatabase();
+            const likesCollection = db.collection("likes");
 
             // Odczytaj aktualną liczbę kliknięć (lub 0, jeśli nie istnieje)
-            const snapshot = await get(likesRef);
-            const currentLikes = snapshot.val() || 0;
+            const photo = await likesCollection.findOne({ photoId });
+            const currentLikes = photo ? photo.likes : 0;
 
             // Zapisz informacje o kliknięciu w bazie danych
-            await set(likesRef, currentLikes + 1);
+            await likesCollection.updateOne(
+                { photoId },
+                { $set: { photoId, likes: currentLikes + 1 } },
+                { upsert: true }
+            );
 
             // Zaktualizuj lokalny stan
             const newClickedArray = [...clickedArray];
