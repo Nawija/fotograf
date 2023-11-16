@@ -12,7 +12,7 @@ async function connectToDatabase() {
         useUnifiedTopology: true,
     });
 
-    const db = client.db("Cluster0");
+    const db = client.db("Cluster0")
     cachedDb = db;
 
     return db;

@@ -2,6 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { connectDatabase } from '../db';
+
+export async function getServerSideProps(context) {
+  const db = await connectDatabase();
+  const photos = await db.collection('photos').find({}).toArray();
+
+  return {
+    props: { photos },
+  };
+}
 
 export default function Photo({ photos }) {
     const [clickedArray, setClickedArray] = useState(
@@ -15,30 +25,28 @@ export default function Photo({ photos }) {
         console.log(newClickedArray);
 
         try {
-            const res = await fetch("/api/fotografia-slubna", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    newClickedArray,
-                }),
-            });
+            const res = await fetch(
+                "http://localhost:3000/api/strefa-klienta",
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            let allPost = await res.json();
 
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-
-            const data = await res.json();
-            return Response.json({ data });
+            return {
+                props: { allPost },
+            };
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
     return (
-        <div className="flex flex-wrap">
-            {photos.map((photo, index) => (
+        <div className="flex items-center justify-center flex-wrap">
+            {/* {photos.map((photo, index) => (
                 <div
                     key={photo.id}
                     className={`relative m-3 group transition-all h-56 w-56 duration-200 hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
@@ -74,7 +82,7 @@ export default function Photo({ photos }) {
                         />
                     </svg>
                 </div>
-            ))}
+            ))} */}
         </div>
     );
 }

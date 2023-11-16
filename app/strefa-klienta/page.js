@@ -1,30 +1,27 @@
-"use client";
+import { notFound } from 'next/navigation';
+import Z from './Z';
+import { connectDatabase } from '../db';
 
-import { useState } from "react";
-import StrefaKlienta from "./StrefaKlienta";
-
-const StrefaKlientaPage = () => {
-    const [reportazZChrztu, setReportazZChrztu] = useState("");
-
-    const handleSubmit = () => {
-        console.log("Fetching data for:", reportazZChrztu);
-    };
-
-    return (
-        <div className="flex items-center justify-center flex-col h-[70vh] space-y-4">
-            <h1 className="text-xl">Strefa Klienta</h1>
-            <input
-                className="rounded-xl text-black pl-2"
-                type="text"
-                value={reportazZChrztu}
-                onChange={(e) => setReportazZChrztu(e.target.value)}
-            />
-            <button className="btn-main py-2 px-4" onClick={handleSubmit}>
-                Enter
-            </button>
-            <StrefaKlienta reportazZChrztu={reportazZChrztu} />
-        </div>
-    );
+const fetchPhotosFromMongoDB = async () => {
+  const db = await connectDatabase();
+  const photos = await db.collection('photos').find({}).toArray();
+  return photos;
 };
 
-export default StrefaKlientaPage;
+export default function FotografiaSlubna({ photos }) {
+  if (!photos) return notFound();
+
+  return (
+    <div className="ml-3 mt-12 mb-20">
+      <Z />
+    </div>
+  );
+}
+
+export async function getServerSideProps() {
+  const photos = await fetchPhotosFromMongoDB();
+
+  return {
+    props: { photos },
+  };
+}
