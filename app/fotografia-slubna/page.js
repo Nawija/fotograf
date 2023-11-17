@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import fetchPhotoDatoCms from "../../lib/fetchPhotoDatoCms";
+import fetchPhotoDatoCms from "../../libs/fetchPhotoDatoCms";
 
 import Photo from "./Photo";
 
