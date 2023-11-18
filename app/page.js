@@ -13,7 +13,7 @@ export default function Home() {
 
     return (
         <>
-            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative mb-6">
+            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative mb-6 mt-10 lg:mt-0">
                 <div className="flex justify-center  ">
                     <div className="flex flex-col items-center justify-center">
                         <div className="flex flex-col  max-w-7xl justify-center items-center space-y-3 w-full ">

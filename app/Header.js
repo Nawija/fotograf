@@ -72,9 +72,7 @@ export default function Header() {
                 >
                     <div
                         className={`h-0.5 rounded-lg bg-red-600 transition-all ${
-                            showMenu
-                                ? "w-4 -rotate-45 scale-110"
-                                : "w-4 m-1"
+                            showMenu ? "w-4 -rotate-45 scale-110" : "w-4 m-1"
                         }`}
                     ></div>
                     <div
@@ -152,6 +150,7 @@ export default function Header() {
 
                     <Link
                         href={strefaKlientaLink.path}
+                        onClick={() => handleMenu()}
                         className="btn-main flex items-center justify-center py-1.5 px-3"
                     >
                         {strefaKlientaLink.label}

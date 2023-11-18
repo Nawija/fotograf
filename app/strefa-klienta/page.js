@@ -40,7 +40,7 @@ export default async function Strefa() {
     const photos = FotografiaSlubna.data.reportazZChrztu.img;
 
     return (
-        <div className="ml-3 mt-12 mb-20">
+        <div className="lg:ml-3 mt-12 mb-20">
             <Z photos={photos} Likes={Likes} />
         </div>
     );

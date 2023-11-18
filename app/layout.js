@@ -19,11 +19,11 @@ export default function RootLayout({ children }) {
             </head>
             <body className="relative w-full">
                 <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-500/20 to-white/0 w-full lg:h-[50vh] -z-50" />
-                <div className="absolute top-0 left-0 w-full h-[80vh]">
-                    <div className="w-full hidden lg:flex h-1/2 lg:rotate-45 rotate-90 rounded-xl bg-gradient-to-tr from-gray-400/90 items-center shadow-xl -z-10" />
+                <div className="absolute top-0 left-0 w-full h-[80vh] -z-10">
+                    <div className="w-full hidden lg:flex h-1/2 lg:rotate-45 rotate-90 rounded-xl bg-gradient-to-tr from-gray-400/90 items-center shadow-xl " />
                 </div>
                 <Header />
-                <main className="mt-20 min-h-[80vh] w-full overflow-hidden">
+                <main className="lg:mt-20 mt-10 min-h-[80vh] w-full overflow-hidden">
                     {children}
                 </main>
                 <Footer />
