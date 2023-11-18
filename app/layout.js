@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
     title: "Create Next App",
@@ -17,13 +17,13 @@ export default function RootLayout({ children }) {
                 <title>Fotograf</title>
                 <link rel="icon" href="../images/fav.jpg" />
             </head>
-            <body className={`${inter.className}`}>
+            <body className="relative w-full">
                 <div className="fixed top-0 left-0 bg-gradient-to-b from-slate-500/20 to-white/0 w-full lg:h-[50vh] -z-50" />
-                <div className="overflow-hidden w-full h-full">
-                    <div className="lg:w-full w-80 h-1/2 rotate-45 rounded-xl bg-gradient-to-tr from-gray-400/90 absolute top-0 left-0 shadow-xl -z-10" />
+                <div className="absolute top-0 left-0 w-full h-[80vh]">
+                    <div className="w-full hidden lg:flex h-1/2 lg:rotate-45 rotate-90 rounded-xl bg-gradient-to-tr from-gray-400/90 items-center shadow-xl -z-10" />
                 </div>
                 <Header />
-                <main className="mt-20 min-h-screen overflow-hidden">
+                <main className="mt-20 min-h-[80vh] w-full overflow-hidden">
                     {children}
                 </main>
                 <Footer />

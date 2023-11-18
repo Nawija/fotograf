@@ -44,11 +44,11 @@ export default function Header() {
 
     return (
         <header
-            className={`text-gray-800 fixed top-0 w-full overflow-hidden z-50 transition-colors duration-300 ${
+            className={`text-gray-800 fixed top-0 left-0 w-full px-5 z-50 transition-colors duration-300 ${
                 pathName === "/" && !isScrolled ? "" : "bg-gray-100 shadow-lg"
             }`}
         >
-            <div className="max-w-screen-2xl lg:p-5 px-6 py-3 mx-auto flex items-center justify-between">
+            <div className="max-w-screen-2xl lg:p-5 py-3 mx-auto flex items-center justify-between">
                 <Link
                     href="/"
                     className="flex font-medium items-center justify-center text-gray-900"
@@ -73,19 +73,19 @@ export default function Header() {
                     <div
                         className={`h-0.5 rounded-lg bg-red-600 transition-all ${
                             showMenu
-                                ? "w-2 translate-y-1 -rotate-45"
+                                ? "w-4 -rotate-45 scale-110"
                                 : "w-4 m-1"
                         }`}
                     ></div>
                     <div
                         className={` h-0.5 rounded-lg bg-red-600 transition-all ${
-                            showMenu ? "w-2.5 m-1" : "w-3 m-1"
+                            showMenu ? "scale-0" : "w-3 m-1"
                         }`}
                     ></div>
                     <div
                         className={` h-0.5 rounded-lg bg-red-600 transition-all ${
                             showMenu
-                                ? "w-2 -translate-y-1 rotate-45"
+                                ? "w-4 -translate-y-1 rotate-45 scale-110"
                                 : "w-4 m-1"
                         }`}
                     ></div>
@@ -129,7 +129,7 @@ export default function Header() {
 
                 {/* -------- Mobile ------------- */}
                 <div
-                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
+                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white/70 backdrop-blur-xl  shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
                         showMenu ? "translate-x-0" : "-translate-x-full"
                     }`}
                 >

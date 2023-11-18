@@ -13,13 +13,12 @@ export default function Home() {
 
     return (
         <>
-            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative">
-                    
+            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative mb-6">
                 <div className="flex justify-center  ">
                     <div className="flex flex-col items-center justify-center">
                         <div className="flex flex-col  max-w-7xl justify-center items-center space-y-3 w-full ">
                             <div className="flex flex-col   md:items-start items-center justify-center  space-y-3 px-8 text-center ">
-                                <h1 className="text-3xl w-max md:text-7xl font-bold relative mb-20 lg:mb-4">
+                                <h1 className="text-3xl w-max md:text-7xl font-bold relative mb-12 lg:mb-4">
                                     Odkryj Sztukę Fotografii
                                     <br /> Fotograf Siedlce
                                     <span className="text-base md:text-xl absolute w-max -bottom-6 right-6 font-light">
@@ -28,7 +27,7 @@ export default function Home() {
                                 </h1>
                             </div>
                             <div className="flex flex-col lg:flex-row space-x-2 space-y-3 md:space-x-6   w-full items-center justify-center scale-110 ">
-                                <div className="lg:w-40 w-80 h-52  overflow-hidden rounded-xl shadow-xl ">
+                                <div className="lg:w-40 w-60 h-52  mt-40 lg:mt-0 overflow-hidden rounded-xl shadow-xl ">
                                     <Image
                                         loading="eager"
                                         className={ImgClass}
@@ -40,7 +39,7 @@ export default function Home() {
                                     />
                                 </div>
                                 <div className="flex flex-row lg:flex-col space-x-3 lg:space-y-6 items-center justify-center">
-                                    <div className="w-40 lg:w-40 h-40 overflow-hidden rounded-xl shadow-xl ">
+                                    <div className="w-40 lg:w-40 h-40 overflow-hidden absolute lg:static -left-3 -bottom-16 rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
@@ -51,7 +50,7 @@ export default function Home() {
                                             alt={heroImgAlt}
                                         />
                                     </div>
-                                    <div className="w-32 lg:w-40 h-48  overflow-hidden rounded-xl shadow-xl ">
+                                    <div className="w-32 lg:w-40 h-48 absolute lg:static -right-3 -bottom-16 overflow-hidden rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
@@ -63,7 +62,7 @@ export default function Home() {
                                         />
                                     </div>
                                 </div>
-                                <div className="lg:w-60 w-52 h-96 hidden lg:flex overflow-hidden rounded-xl shadow-xl ">
+                                <div className="lg:w-60 h-96 absolute top-0 lg:static -z-10 w-full lg:flex overflow-hidden rounded-xl shadow-xl ">
                                     <Image
                                         loading="eager"
                                         className={ImgClass}
@@ -75,7 +74,7 @@ export default function Home() {
                                     />
                                 </div>
                                 <div className="flex flex-row lg:flex-col space-x-3 lg:space-y-6 items-center justify-center ">
-                                    <div className="w-40 lg:w-40 h-48  overflow-hidden rounded-xl shadow-xl ">
+                                    <div className="w-40 lg:w-40 h-48 hidden lg:flex  overflow-hidden rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
@@ -86,7 +85,7 @@ export default function Home() {
                                             alt={heroImgAlt}
                                         />
                                     </div>
-                                    <div className="w-32 lg:w-40 h-32  overflow-hidden rounded-xl shadow-xl ">
+                                    <div className="w-32 lg:w-40 h-32 hidden lg:flex overflow-hidden rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
