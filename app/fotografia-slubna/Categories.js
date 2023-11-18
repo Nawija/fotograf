@@ -4,12 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function Categories({ showMenu, setShowMenu }) {
+export default function Categories() {
     const [fixedPosition, setFixedPosition] = useState(null);
-
-    function handleMenu() {
-        setShowMenu(!showMenu);
-    }
 
     const addFixedPosition = () => {
         if (window.scrollY >= 40) {
@@ -44,52 +40,19 @@ export default function Categories({ showMenu, setShowMenu }) {
     ];
     return (
         <div
-            className={`flex items-center justify-start flex-col mt-12 text-start h-full lg:pl-0 pl-2 text-sm border-r-2 transition-all  relative ${
-                showMenu
-                    ? "-translate-x-[200%]"
-                    : "w-48 lg:w-52 translate-x-0 "
-            }`}
+            className={`lg:flex items-center justify-start flex-col mt-12 text-start h-full lg:pl-0 pr-2 w-52 hidden text-sm border-r-2 transition-all relative`}
         >
-            <button
-                aria-label="Menu"
-                className={`fixed lg:hidden p-2.5 h-12 rounded-lg order-1 lg:order-none transition-transform ${
-                    showMenu
-                        ? "left-20 h-full -top-20 bg-gray-200"
-                        : "left-2 -top-11"
-                }`}
-                onClick={() => handleMenu()}
-            >
-                <div
-                    className={`h-0.5 rounded-lg bg-red-600 transition-all ${
-                        showMenu
-                            ? "w-2 translate-y-1 translate-x-3 rotate-45"
-                            : "w-2 translate-y-1 -rotate-45"
-                    }`}
-                ></div>
-                <div
-                    className={` h-0.5 rounded-lg bg-red-600 transition-all ${
-                        showMenu ? "w-3 m-1" : "w-3 m-1"
-                    }`}
-                ></div>
-                <div
-                    className={` h-0.5 rounded-lg bg-red-600 transition-all ${
-                        showMenu
-                            ? "w-2 -translate-y-1 translate-x-3 -rotate-45"
-                            : "w-2 -translate-y-1 rotate-45"
-                    }`}
-                ></div>
-            </button>
             <div
-                className={`flex flex-col transition-all ${
-                    fixedPosition ? "sticky top-20" : "top-20"
+                className={`flex flex-col h-full ${
+                    fixedPosition ? "fixed top-20" : "top-20"
                 }`}
             >
                 {categoriesLinks.map((categoriesLink) => (
                     <Link
                         key={categoriesLink.path}
-                        href={`/fotografia/${categoriesLink.path}`}
+                        href={`/${categoriesLink.path}`}
                         className={`transition-colors p-1.5 mt-0.5 ${
-                            pathname === `/fotografia/${categoriesLink.path}`
+                            pathname === `/${categoriesLink.path}`
                                 ? "text-red-600 underline underline-offset-2"
                                 : "hover:text-red-600"
                         }`}

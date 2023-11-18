@@ -1,5 +1,24 @@
 import { notFound } from "next/navigation";
-import Z from "./Z";
+import Photo from "./Photo";
+import MenuBar from "./MenuBar";
+
+const fetchLikesDB = async () => {
+    try {
+        const res = await fetch(
+            "https://x1-git-main-nawija.vercel.app/api/strefa-klienta",
+            {
+                method: "GET",
+                cache: "no-store",
+            }
+        );
+        if (!res.ok) {
+            throw new Error("Failed fetch likes DB");
+        }
+        return res.json();
+    } catch (error) {
+        console.log("Error loading Likes: ", error);
+    }
+};
 
 const fetchPhotoDatoCms = async () => {
     const res = await fetch("https://graphql.datocms.com/", {
@@ -18,21 +37,6 @@ const fetchPhotoDatoCms = async () => {
     return FotografiaSlubna;
 };
 
-const fetchLikesDB = async () => {
-    try {
-        const res = await fetch("https://x1-git-main-nawija.vercel.app/api/strefa-klienta", {
-            method: "GET",
-            cache: "no-store",
-        });
-        if (!res.ok) {
-            throw new Error("Failed fetch likes DB");
-        }
-        return res.json();
-    } catch (error) {
-        console.log("Error loading Likes: ", error);
-    }
-};
-
 export default async function Strefa() {
     const Likes = await fetchLikesDB();
     const FotografiaSlubna = await fetchPhotoDatoCms();
@@ -40,8 +44,9 @@ export default async function Strefa() {
     const photos = FotografiaSlubna.data.reportazZChrztu.img;
 
     return (
-        <div className="lg:ml-3 mt-12 mb-20">
-            <Z photos={photos} Likes={Likes} />
+        <div className="flex items-start justify-center mx-auto text-center lg:ml-3 mt-6 mb-20">
+            <Photo photos={photos} Likes={Likes} />
+            <MenuBar />
         </div>
     );
 }

@@ -127,7 +127,7 @@ export default function Header() {
 
                 {/* -------- Mobile ------------- */}
                 <div
-                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white/70 backdrop-blur-xl  shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
+                    className={`items-center justify-center text-sm lg:hidden flex flex-col fixed top-0 w-80 bg-white shadow-2xl space-y-4 left-0 h-screen transition-transform duration-200 ${
                         showMenu ? "translate-x-0" : "-translate-x-full"
                     }`}
                 >

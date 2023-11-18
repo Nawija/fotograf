@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import MenuLeftBar from './MenuLeftBar'
-
-export const dynamicParams = true;
+import PhotoId from "./PhotoId";
 
 const fetchPhotoDatoCms = async () => {
     const res = await fetch("https://graphql.datocms.com/", {
@@ -34,61 +32,66 @@ export default async function PhotoPage({ params: { photoId } }) {
     const nextPhotoId = photos[nextPhotoIndex].id;
     const prevPhotoId = photos[prevPhotoIndex].id;
 
-    const arrowBtn =
-        "p-2 border font-semibold rounded-lg bg-gray-700 text-white absolute top-1/2 hover:bg-gray-600 transition-colors";
+    // const arrowBtn =
+    //     "p-2 border font-semibold rounded-lg bg-gray-700 text-white absolute top-[100%] lg:top-1/2 hover:bg-gray-600 transition-colors";
 
     return (
-        <div className="flex items-start justify-center">
-            <div
-                className={`p-10 flex items-center justify-center text-center mx-auto top-0 left-0 h-[90vh] w-full relative`}
-            >
-                <Link
-                    href={`/fotografia-slubna/${nextPhotoId}`}
-                    className={`${arrowBtn} lg:left-6 left-0`}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-                        />
-                    </svg>
-                </Link>
-                <div className="w-full h-[80vh] relative flex items-center justify-center -z-10">
-                    <img
-                        className="w-auto h-full object-fill"
-                        src={photos[photoIndex].url}
-                        alt={photoId}
-                    />
-                </div>
-                <Link
-                    href={`/fotografia-slubna/${prevPhotoId}`}
-                    className={`${arrowBtn} lg:right-6 right-0`}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                        />
-                    </svg>
-                </Link>
-            </div>         
-            <MenuLeftBar />
-        </div>
+        // <div className="flex items-start justify-center">
+        //     <div
+        //         className={`p-1 lg:p-6 flex items-center justify-center text-center mx-auto top-0 left-0 h-full w-full relative`}
+        //     >
+        //         <Link
+        //             href={`/fotografia-slubna/${nextPhotoId}`}
+        //             className={`${arrowBtn} lg:left-2 left-0`}
+        //         >
+        //             <svg
+        //                 xmlns="http://www.w3.org/2000/svg"
+        //                 fill="none"
+        //                 viewBox="0 0 24 24"
+        //                 strokeWidth={1.5}
+        //                 stroke="currentColor"
+        //                 className="w-5 h-5"
+        //             >
+        //                 <path
+        //                     strokeLinecap="round"
+        //                     strokeLinejoin="round"
+        //                     d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+        //                 />
+        //             </svg>
+        //         </Link>
+        //         <div className="w-full min-h-[86vh] max-h-[86vh] relative flex items-center justify-center overflow-hidden -z-10 object-fill">
+        //             <img
+        //                 className="w-full lg:w-auto h-auto object-fill"
+        //                 src={photos[photoIndex].url}
+        //                 alt={photoId}
+        //             />
+        //         </div>
+        //         <Link
+        //             href={`/fotografia-slubna/${prevPhotoId}`}
+        //             className={`${arrowBtn} lg:right-2 right-0`}
+        //         >
+        //             <svg
+        //                 xmlns="http://www.w3.org/2000/svg"
+        //                 fill="none"
+        //                 viewBox="0 0 24 24"
+        //                 strokeWidth={1.5}
+        //                 stroke="currentColor"
+        //                 className="w-5 h-5"
+        //             >
+        //                 <path
+        //                     strokeLinecap="round"
+        //                     strokeLinejoin="round"
+        //                     d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+        //                 />
+        //             </svg>
+        //         </Link>
+        //     </div>
+        // </div>
+        <PhotoId
+            photos={photos}
+            nextPhotoId={nextPhotoId}
+            prevPhotoId={prevPhotoId}
+            photoIndex={photoIndex}
+        />
     );
 }

@@ -13,18 +13,17 @@ export default function Photo({ photos, Likes }) {
         }
     }, [Likes]);
 
-    const handleLike = async (photoId) => {
+    const handleLike = async (photoId, photoUrl) => {
         const isLiked = likedPhotos.includes(photoId);
 
         // Check if the photo is already liked
         if (isLiked) {
-            // If liked, perform a DELETE request to remove the like
             const response = await fetch("/api/strefa-klienta", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ photoId }),
+                body: JSON.stringify({ photoId, photoUrl }),
             });
 
             if (response.ok) {
@@ -35,13 +34,12 @@ export default function Photo({ photos, Likes }) {
                 console.error("Failed to remove like");
             }
         } else {
-            // If not liked, perform a POST request to add the like
             const response = await fetch("/api/strefa-klienta", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ photoId }),
+                body: JSON.stringify({ photoId, photoUrl }),
             });
 
             if (response.ok) {
@@ -56,33 +54,37 @@ export default function Photo({ photos, Likes }) {
     };
 
     return (
-        <div className="flex items-center justify-center flex-wrap">
+        <div className="flex items-center justify-start flex-wrap mt-2">
             {photos.map((photo) => (
-                <div
-                    key={photo.id}
-                    className={`relative mx-4 my-2 lg:m-3 group transition-all w-full h-full lg:h-56 lg:w-56 duration-200 hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
-                >
-                    <Link
-                        href={`/fotografia-slubna/${photo.id}`}
+                <div className="relative group mx-3 my-2 lg:m-2">
+                    <div
                         key={photo.id}
+                        className={`relative transition-all w-full h-full lg:h-56 lg:w-56 duration-200 lg:hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
                     >
-                        <img
-                            className="object-cover opacityAnimation h-full w-full"
-                            src={photo.url}
-                        />
-                        <div className="opacity-0 group-hover:opacity-100 absolute h-full w-full top-0 left-0 bg-gradient-to-b to-black/70 via-transparent from-transparent transition-all duration-500 delay-100" />
-                    </Link>
-                    <div className="absolute bottom-2 right-2 z-10 lg:group-hover:opacity-100 lg:opacity-0">
+                        <Link
+                            href={`/strefa-klienta/${photo.id}`}
+                            key={photo.id}
+                        >
+                            <img
+                                className="object-cover opacityAnimation h-full w-full"
+                                src={photo.url}
+                            />
+                            <div className="opacity-0 group-hover:opacity-100 absolute h-full w-full top-0 left-0 bg-gradient-to-b to-black/70 via-transparent from-transparent transition-all duration-500 delay-100 lg:flex hidden" />
+                        </Link>
+                    </div>
+                    <button
+                        className="absolute bottom-6 lg:bottom-4 right-2 lg:right-4 z-40 w-max"
+                        onClick={() => handleLike(photo.id, photo.url)}
+                    >
                         <svg
-                            onClick={() => handleLike(photo.id)}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
                             stroke="currentColor"
-                            className={`w-9 h-9 p-1.5  z-20 transition-all duration-100 ${
+                            className={`w-9 h-9 p-1.5  z-20 ${
                                 likedPhotos.includes(photo.id)
-                                    ? "text-red-400 fill-red-500/80"
-                                    : "text-white fill-white/20"
+                                    ? "text-red-400/80 fill-red-500/80"
+                                    : "text-white/40 fill-white/20"
                             }`}
                         >
                             <path
@@ -98,7 +100,7 @@ export default function Photo({ photos, Likes }) {
                                     : ""
                             }`}
                         />
-                    </div>
+                    </button>
                 </div>
             ))}
         </div>

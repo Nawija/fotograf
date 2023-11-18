@@ -27,16 +27,32 @@ export default function OfertaPage() {
 
     return (
         <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation mb-20">
-            <div className="w-full h-[30vh] fixed -z-10 left-0 top-[4.5rem]">
+            <div className="p-2 fixed left-1/2 -translate-x-1/2 top-[60%] -translate-y-1/2 z-10 animate-bounce rounded-full">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                </svg>
+            </div>
+            <div className="w-full h-[30vh] fixed left-0 top-[4.5rem] lg:-z-10">
                 <Image src={HeroImg} />
-                <div className="absolute left-1/2 lg:left-[60%] top-[73%] lg:top-[100%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-normal font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
+                <div className="absolute left-1/2 lg:left-[66%] top-[73%] lg:top-[100%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-normal font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
                     <p>Wypełnij Formularz</p>
-                    <p className=" lg:text-red-600 -my-2">lub</p>
+                    <p className=" lg:text-red-600 -my-1">lub</p>
                     <p className="mb-3">Zadzwoń</p>
                     <div className="flex items-center justify-start">
                         <Link
                             href="tel:570750307"
-                            className="lg:py-2 py-2.5 border-emerald-600 flex items-center justify-center px-4 rounded-2xl shadow-2xl shadow-emerald-500/50 font-medium text-sm lg:text-lg w-max bg-gradient-to-b from-emerald-700 to-emerald-800 lg:text-white"
+                            className="lg:py-2 py-2.5 flex items-center justify-center px-4 z-10 rounded-2xl shadow-xl shadow-emerald-400/20 font-medium text-sm lg:text-base w-max bg-gradient-to-bl from-emerald-600 to-emerald-800 lg:text-white"
                         >
                             {" "}
                             <svg
@@ -58,7 +74,7 @@ export default function OfertaPage() {
                 </div>
             </div>
             <form
-                className="p-6 rounded-lg border bg-white shadow-xl"
+                className="p-6 rounded-lg border bg-white shadow-xl z-20"
                 action="https://public.herotofu.com/v1/d1061fe0-e21a-11ed-8300-fd92f9e8911a"
                 method="post"
                 accept-charset="UTF-8"
