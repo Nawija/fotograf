@@ -11,44 +11,6 @@ export default function PhotoId({
     photoIndex,
 }) {
     const router = useRouter();
-    const arrowBtn =
-        "p-2 border font-semibold rounded-lg bg-gray-100 text-gray-900 absolute top-[100%] lg:top-1/2 hover:bg-white hover:text-red-600 transition-colors";
-
-    const touchStartX = useRef(null);
-    const touchEndX = useRef(null);
-
-    const handleTouchStart = (e) => {
-        touchStartX.current = e.touches[0].clientX;
-    };
-
-    const handleTouchMove = (e) => {
-        touchEndX.current = e.touches[0].clientX;
-    };
-
-    const handleTouchEnd = () => {
-        const deltaX = touchEndX.current - touchStartX.current;
-
-        if (deltaX > 50) {
-            router.push(`/fotografia-slubna/${prevPhotoId}`);
-        } else if (deltaX < -400) {
-            router.push(`/fotografia-slubna/${nextPhotoId}`);
-        }
-
-        touchStartX.current = null;
-        touchEndX.current = null;
-    };
-
-    useEffect(() => {
-        document.addEventListener("touchstart", handleTouchStart);
-        document.addEventListener("touchmove", handleTouchMove);
-        document.addEventListener("touchend", handleTouchEnd);
-
-        return () => {
-            document.removeEventListener("touchstart", handleTouchStart);
-            document.removeEventListener("touchmove", handleTouchMove);
-            document.removeEventListener("touchend", handleTouchEnd);
-        };
-    }, [router, prevPhotoId, nextPhotoId]);
 
     useEffect(() => {
         const handleKeyPress = (e) => {
@@ -65,8 +27,11 @@ export default function PhotoId({
         };
     }, [router, prevPhotoId, nextPhotoId]);
 
+    const arrowBtn =
+        "p-2 border font-semibold rounded-lg bg-gray-100 text-gray-900 absolute top-[80%] lg:top-1/2 hover:bg-white hover:text-red-600 transition-colors";
+
     return (
-        <div className="flex items-start justify-center w-full">
+        <div className="flex items-start justify-center w-full mt-12 lg:mt-0">
             <div
                 className={`p-1 lg:p-6 flex items-center justify-center text-center mx-auto top-0 left-0 h-full w-full relative`}
             >
@@ -89,7 +54,9 @@ export default function PhotoId({
                         />
                     </svg>
                 </Link>
-                <div className="w-full min-h-[86vh] max-h-[86vh] relative flex items-center justify-center overflow-hidden -z-10 object-fill">
+                <div
+                    className="w-full min-h-[55vh] max-h-[55vh] lg:min-h-[86vh] lg:max-h-[86vh] relative flex items-center justify-center overflow-hidden -z-10 object-fill"
+                >
                     <img
                         className="w-full lg:w-auto h-auto object-fill"
                         src={photos[photoIndex].url}
