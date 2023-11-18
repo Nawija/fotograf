@@ -19,7 +19,7 @@ export default function Photo({ photos, Likes }) {
         // Check if the photo is already liked
         if (isLiked) {
             // If liked, perform a DELETE request to remove the like
-            const response = await fetch("/api/strefa-klienta", {
+            const response = await fetch("https://x1-git-main-nawija.vercel.app//api/strefa-klienta", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function Photo({ photos, Likes }) {
             }
         } else {
             // If not liked, perform a POST request to add the like
-            const response = await fetch("/api/strefa-klienta", {
+            const response = await fetch("https://x1-git-main-nawija.vercel.app//api/strefa-klienta", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
