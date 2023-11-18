@@ -20,7 +20,7 @@ const fetchPhotoDatoCms = async () => {
 
 const fetchLikesDB = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/strefa-klienta", {
+        const res = await fetch("https://x1-git-main-nawija.vercel.app/api/strefa-klienta", {
             method: "GET",
             cache: "no-store",
         });
