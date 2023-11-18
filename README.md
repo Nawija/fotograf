@@ -1,0 +1,1 @@
+app/strefa-klienta/page.js uzywa fetchowanie danych na https://x1-git-main-nawija.vercel.app/
