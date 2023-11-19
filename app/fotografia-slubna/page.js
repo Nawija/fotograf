@@ -8,6 +8,7 @@ export default async function FotografiaSlubna() {
     if (!FotografiaSlubna) return notFound();
 
     const photos = FotografiaSlubna.data.reportazZChrztu.img;
+    
 
     return (
         <div className="ml-3 mt-12">
