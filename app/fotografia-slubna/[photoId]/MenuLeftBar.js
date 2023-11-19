@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -21,10 +22,12 @@ const handleClick = (platform) => {
     window.open(shareUrl, "_blank");
 };
 
-export default function MenuLeftBar({ likedPhotoIds, photoId, Likes }) {
+export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
     const router = useRouter();
     let [likedPhotos, setLikedPhotos] = useState([]);
     const [showCommentInput, setShowCommentInput] = useState(false);
+    const [commentText, setCommentText] = useState("");
+    const [comments, setComments] = useState(Desc.Coms || []);
 
     const toggleCommentInput = () => {
         setShowCommentInput(!showCommentInput);
@@ -67,6 +70,41 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes }) {
             } else {
                 console.error("Failed to add like");
             }
+        }
+    };
+
+    const handleCom = async () => {
+        const response = await fetch("/api/fotografia-slubna", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ desc: commentText }),
+        });
+
+        if (response.ok) {
+            const newComment = await response.json();
+            setComments([...comments, newComment]);
+            console.log("Comment added successfully");
+        } else {
+            console.error("Failed to add like");
+        }
+    };
+    const handleComDelete = async (commentId) => {
+        const response = await fetch(`/api/fotografia-slubna/${commentId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (response.ok) {
+            setComments(
+                comments.filter((comment) => comment._id !== commentId)
+            ); // Update state by removing the deleted comment
+            console.log("Comment deleted successfully");
+        } else {
+            console.error("Failed to delete comment");
         }
     };
 
@@ -173,10 +211,28 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes }) {
                 <textarea
                     type="textarea"
                     placeholder="Wpisz komentarz..."
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
                     className="h-32 mb-2 bg-yellow-100 border-2 p-1 border-white"
                 />
-                <button className="btn-main px-3 py-1">Zapisz</button>
+                <button onClick={handleCom} className="btn-main px-3 py-1">
+                    Zapisz
+                </button>
             </form>
+            {comments.map((d) => (
+                <div
+                    key={d._id}
+                    className="relative group mx-3 my-2 lg:m-2 bg-yellow-100 px-5 py-3 shadow-xl"
+                >
+                    <button
+                        onClick={() => handleComDelete(d._id)}
+                        className="bg-gradient-to-tr from-red-500 to-red-300 text-white group-hover:flex hidden opacity-0 group-hover:opacity-100 rounded-full px-2 absolute -top-2 -right-2"
+                    >
+                        x
+                    </button>
+                    <p>{d.desc}</p>
+                </div>
+            ))}
         </div>
     );
 }

@@ -1,23 +1,23 @@
 import { NextResponse } from "next/server";
 import connectMongoDB from "../../../libs/mongodb";
-import Like from "../../../models/like";
+import Com from "../../../models/com";
 
 export async function POST(request) {
-    const { photoId, photoUrl } = await request.json();
+    const { commentId, desc } = await request.json();
     await connectMongoDB();
-    await Like.create({ photoId, photoUrl });
-    return NextResponse.json({ message: "Like dodany" }, { status: 201 });
+    await Com.create({ commentId, desc });
+    return NextResponse.json({ message: "Desc dodany" }, { status: 201 });
 }
 
 export async function GET() {
     await connectMongoDB();
-    const Likes = await Like.find();
-    return NextResponse.json({ Likes });
+    const Coms = await Com.find();
+    return NextResponse.json({ Coms });
 }
 
 export async function DELETE(request) {
-    const { photoId, photoUrl } = await request.json();
+    const { commentId, desc } = await request.json();
     await connectMongoDB();
-    await Like.deleteMany({ photoId, photoUrl });
-    return NextResponse.json({ message: "Like usuniety" }, { status: 200 });
+    await Com.deleteMany({ commentId, desc });
+    return NextResponse.json({ message: "Desc usuniety" }, { status: 200 });
 }

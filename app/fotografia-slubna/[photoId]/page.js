@@ -2,6 +2,21 @@ import { notFound } from "next/navigation";
 import PhotoId from "./PhotoId";
 import MenuLeftBar from "./MenuLeftBar";
 
+const fetchDescDB = async () => {
+    try {
+        const res = await fetch("http://localhost:3000/api/fotografia-slubna", {
+            method: "GET",
+            cache: "no-store",
+        });
+        if (!res.ok) {
+            throw new Error("Failed fetch likes DB");
+        }
+        return res.json();
+    } catch (error) {
+        console.log("Error loading Likes: ", error);
+    }
+};
+
 const fetchLikesDB = async () => {
     try {
         const res = await fetch(
@@ -38,6 +53,7 @@ const fetchPhotoDatoCms = async () => {
 };
 
 export default async function PhotoPage({ params: { photoId } }) {
+    const Desc = await fetchDescDB();
     const Likes = await fetchLikesDB();
     const datoCms = await fetchPhotoDatoCms(photoId);
     const photos = datoCms.data.reportazZChrztu.img;
@@ -64,6 +80,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                 likedPhotoIds={likedPhotoIds}
                 photoId={photoId}
                 Likes={Likes}
+                Desc={Desc}
             />
         </div>
     );
