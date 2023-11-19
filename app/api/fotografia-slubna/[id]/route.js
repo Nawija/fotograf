@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function DELETE(request, { params }) {
     const { id } = params;
-    const { coms } = await request.json();
+    const { com } = await request.json();
     await connectMongoDB();
-    await Com.findByIdAndDelete(id, { coms });
+    await Com.findByIdAndDelete(id, { com });
     return NextResponse.json(
         { message: "Com zaktualizowany" },
         { status: 200 }
