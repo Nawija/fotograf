@@ -4,10 +4,13 @@ import MenuLeftBar from "./MenuLeftBar";
 
 const fetchDescDB = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/fotografia-slubna", {
-            method: "GET",
-            cache: "no-store",
-        });
+        const res = await fetch(
+            "https://x1-git-main-nawija.vercel.app/api/fotografia-slubna",
+            {
+                method: "GET",
+                cache: "no-store",
+            }
+        );
         if (!res.ok) {
             throw new Error("Failed fetch likes DB");
         }
