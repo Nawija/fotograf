@@ -95,6 +95,8 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
         }
     };
     const handleComDelete = async (commentId) => {
+        console.log("Deleting comment with ID:", commentId);
+
         const response = await fetch(`/api/fotografia-slubna/${commentId}`, {
             method: "DELETE",
             headers: {
@@ -102,10 +104,12 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
             },
         });
 
+        console.log("Response:", response);
+
         if (response.ok) {
             setComments(
                 comments.filter((comment) => comment._id !== commentId)
-            ); // Update state by removing the deleted comment
+            );
             console.log("Comment deleted successfully");
         } else {
             console.error("Failed to delete comment");

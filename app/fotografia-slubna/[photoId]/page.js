@@ -19,6 +19,23 @@ const fetchDescDB = async () => {
         console.log("Error loading Likes: ", error);
     }
 };
+const deleteDescDB = async () => {
+    try {
+        const res = await fetch(
+            "https://x1-git-main-nawija.vercel.app/api/fotografia-slubna",
+            {
+                method: "DELETE",
+                cache: "no-store",
+            }
+        );
+        if (!res.ok) {
+            throw new Error("Failed fetch likes DB");
+        }
+        return res.json();
+    } catch (error) {
+        console.log("Error loading Likes: ", error);
+    }
+};
 
 const fetchLikesDB = async () => {
     try {
@@ -56,6 +73,7 @@ const fetchPhotoDatoCms = async () => {
 };
 
 export default async function PhotoPage({ params: { photoId } }) {
+    const DeleteDesc = await deleteDescDB();
     const Desc = await fetchDescDB();
     const Likes = await fetchLikesDB();
     const datoCms = await fetchPhotoDatoCms(photoId);
@@ -80,6 +98,7 @@ export default async function PhotoPage({ params: { photoId } }) {
                 photoIndex={photoIndex}
             />
             <MenuLeftBar
+                DeleteDesc={DeleteDesc}
                 likedPhotoIds={likedPhotoIds}
                 photoId={photoId}
                 Likes={Likes}
