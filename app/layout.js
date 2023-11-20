@@ -1,8 +1,11 @@
 // import { Inter } from "next/font/google";
-import "../styles/globals.css";
+import NextTopLoader from "nextjs-toploader";
+
 import Header from "./Header";
 import Footer from "./Footer";
 import EffectBg from "./EffectBg";
+
+import "../styles/globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +22,17 @@ export default function RootLayout({ children }) {
                 <link rel="icon" href="../images/fav.jpg" />
             </head>
             <body className="relative w-full">
+                <NextTopLoader
+                    color="#a81616"
+                    initialPosition={0.08}
+                    crawlSpeed={200}
+                    height={3.6}
+                    crawl={true}
+                    showSpinner={false}
+                    easing="ease"
+                    speed={200}
+                    shadow="0 0 10px #000000 0 5px #000000"
+                />
                 <EffectBg />
                 <Header />
                 <main className="lg:mt-20 mt-10 min-h-screen w-full overflow-hidden">

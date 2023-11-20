@@ -13,7 +13,7 @@ export default function MenuBar({ photos, Likes }) {
                 href={`/api/pobierz-zdjecia/?images=${encodeURIComponent(
                     JSON.stringify(photos)
                 )}`}
-                target="_blank"
+                // target="_blank"
                 rel="noopener noreferrer"
                 className={LinkStyle}
             >
