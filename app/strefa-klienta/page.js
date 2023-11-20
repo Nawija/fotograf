@@ -45,7 +45,7 @@ export default async function Strefa() {
 
     return (
         <div className="flex flex-col items-start justify-center mt-3 mb-20 max-w-screen-2xl mx-auto relative">
-            <MenuBar />
+            <MenuBar photos={photos} Likes={Likes} />
             <Photo photos={photos} Likes={Likes} />
         </div>
     );

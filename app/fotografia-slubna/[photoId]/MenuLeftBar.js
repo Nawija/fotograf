@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -22,7 +23,14 @@ const handleClick = (platform) => {
     window.open(shareUrl, "_blank");
 };
 
-export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
+export default function MenuLeftBar({
+    likedPhotoIds,
+    photoId,
+    Likes,
+    Desc,
+    photos,
+    photoIndex,
+}) {
     const router = useRouter();
     let [likedPhotos, setLikedPhotos] = useState([]);
     const [showCommentInput, setShowCommentInput] = useState(false);
@@ -64,13 +72,13 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
                 },
                 body: JSON.stringify({ photoId, photoUrl }),
             });
-            router.refresh();
 
             if (response.ok) {
                 setLikedPhotos((prevLikedPhotos) => [
                     ...prevLikedPhotos,
                     photoId,
                 ]);
+                router.refresh();
             } else {
                 console.error("Failed to add like");
             }
@@ -90,6 +98,7 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
             const newComment = await response.json();
             setComments([...comments, newComment]);
             console.log("Comment added successfully");
+            router.refresh();
         } else {
             console.error("Failed to add like");
         }
@@ -123,6 +132,7 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
         }
     }, [Likes]);
 
+    const xxx = [photos[photoIndex]];
     return (
         <div
             className={`flex items-start justify-start flex-col mt-12 text-start h-full pl-3 border-l-2 transition-all relative text-base space-y-4 w-52`}
@@ -190,7 +200,14 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
                     Twitter "X"
                 </button>
             </div>
-            <p className="w-max border-2 border-white px-3 py-1.5 bg-white text-sm rounded-lg flex items-center justify-center font-medium cursor-pointer hover:bg-green-50 transition-colors">
+            <Link
+                href={`/api/pobierz-zdjecie/?images=${encodeURIComponent(
+                    JSON.stringify(xxx)
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-max border-2 border-white px-3 py-1.5 bg-white text-sm rounded-lg flex items-center justify-center font-medium cursor-pointer hover:bg-green-50 transition-colors"
+            >
                 Pobierz Zdjęcie
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +223,7 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
                         d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
                     />
                 </svg>
-            </p>
+            </Link>
             <button
                 onClick={toggleCommentInput}
                 className={`w-max border-2 border-white px-3 py-1.5  text-sm rounded-lg flex items-center justify-center font-medium cursor-pointer hover:bg-yellow-50 transition-colors ${

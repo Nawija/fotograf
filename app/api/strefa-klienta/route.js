@@ -3,9 +3,9 @@ import connectMongoDB from "../../../libs/mongodb";
 import Like from "../../../models/like";
 
 export async function POST(request) {
-    const { photoId, photoUrl } = await request.json();
+    const { photoId, url } = await request.json();
     await connectMongoDB();
-    await Like.create({ photoId, photoUrl });
+    await Like.create({ photoId, url });
     return NextResponse.json({ message: "Like dodany" }, { status: 201 });
 }
 
@@ -16,8 +16,8 @@ export async function GET() {
 }
 
 export async function DELETE(request) {
-    const { photoId, photoUrl } = await request.json();
+    const { photoId, url } = await request.json();
     await connectMongoDB();
-    await Like.deleteMany({ photoId, photoUrl });
+    await Like.deleteMany({ photoId, url });
     return NextResponse.json({ message: "Like usuniety" }, { status: 200 });
 }

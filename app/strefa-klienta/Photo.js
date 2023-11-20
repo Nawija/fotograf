@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Photo({ photos, Likes }) {
+    const router = useRouter();
     let [likedPhotos, setLikedPhotos] = useState([]);
 
     useEffect(() => {
@@ -13,23 +15,22 @@ export default function Photo({ photos, Likes }) {
         }
     }, [Likes]);
 
-    const handleLike = async (photoId, photoUrl) => {
+    const handleLike = async (photoId, url) => {
         const isLiked = likedPhotos.includes(photoId);
-
-        // Check if the photo is already liked
         if (isLiked) {
             const response = await fetch("/api/strefa-klienta", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ photoId, photoUrl }),
+                body: JSON.stringify({ photoId, url }),
             });
 
             if (response.ok) {
                 setLikedPhotos((prevLikedPhotos) =>
                     prevLikedPhotos.filter((id) => id !== photoId)
                 );
+                router.refresh();
             } else {
                 console.error("Failed to remove like");
             }
@@ -39,7 +40,7 @@ export default function Photo({ photos, Likes }) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ photoId, photoUrl }),
+                body: JSON.stringify({ photoId, url }),
             });
 
             if (response.ok) {
@@ -47,6 +48,7 @@ export default function Photo({ photos, Likes }) {
                     ...prevLikedPhotos,
                     photoId,
                 ]);
+                router.refresh();
             } else {
                 console.error("Failed to add like");
             }

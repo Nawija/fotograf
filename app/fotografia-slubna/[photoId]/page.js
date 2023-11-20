@@ -88,16 +88,17 @@ export default async function PhotoPage({ params: { photoId } }) {
     const prevPhotoIndex = (photoIndex + 1) % photos.length;
     const nextPhotoId = photos[nextPhotoIndex].id;
     const prevPhotoId = photos[prevPhotoIndex].id;
-
     return (
         <div className="flex lg:flex-row flex-col max-w-screen-2xl mx-auto mb-20">
             <PhotoId
                 photos={photos}
+                photoIndex={photoIndex}
                 nextPhotoId={nextPhotoId}
                 prevPhotoId={prevPhotoId}
-                photoIndex={photoIndex}
             />
             <MenuLeftBar
+                photos={photos}
+                photoIndex={photoIndex}
                 DeleteDesc={DeleteDesc}
                 likedPhotoIds={likedPhotoIds}
                 photoId={photoId}
