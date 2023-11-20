@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const comSchema = new Schema({
+    commentId: String,
     desc: String,
 });
 
