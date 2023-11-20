@@ -204,8 +204,8 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
             <form
                 className={`transition-all relative flex flex-col items-start ${
                     showCommentInput
-                        ? "flex flex-col h-40 scale-100 "
-                        : "h-0 scale-0"
+                        ? "flex flex-col h-40 w-32 scale-100 "
+                        : "h-0 w-0 scale-0"
                 }`}
             >
                 <textarea

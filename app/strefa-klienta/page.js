@@ -44,9 +44,9 @@ export default async function Strefa() {
     const photos = FotografiaSlubna.data.reportazZChrztu.img;
 
     return (
-        <div className="flex items-start justify-center mx-auto text-center lg:ml-3 mt-6 mb-20">
-            <Photo photos={photos} Likes={Likes} />
+        <div className="flex flex-col items-start justify-center mt-3 mb-20 max-w-screen-2xl mx-auto relative">
             <MenuBar />
+            <Photo photos={photos} Likes={Likes} />
         </div>
     );
 }

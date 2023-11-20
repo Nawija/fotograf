@@ -59,7 +59,7 @@ export default function Photo({ photos, Likes }) {
                 <div className="relative group mx-3 my-2 lg:m-2">
                     <div
                         key={photo.id}
-                        className={`relative transition-all w-full h-full lg:h-56 lg:w-56 duration-200 lg:hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
+                        className={`relative transition-all w-full h-full lg:h-56 lg:w-60 duration-200 lg:hover:scale-[1.015] hover:shadow-2xl cursor-pointer overflow-hidden rounded-md`}
                     >
                         <Link
                             href={`/strefa-klienta/${photo.id}`}
