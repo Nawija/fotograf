@@ -26,11 +26,15 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
     const router = useRouter();
     let [likedPhotos, setLikedPhotos] = useState([]);
     const [showCommentInput, setShowCommentInput] = useState(false);
+    const [showShareMenu, setShowShareMenu] = useState(false);
     const [commentText, setCommentText] = useState("");
     const [comments, setComments] = useState(Desc.Coms || []);
 
     const toggleCommentInput = () => {
         setShowCommentInput(!showCommentInput);
+    };
+    const toggleShowShareMenu = () => {
+        setShowShareMenu(!showShareMenu);
     };
 
     const handleLike = async (photoId, photoUrl) => {
@@ -143,7 +147,7 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
                 </svg>
             </button>
             <button
-                onClick={() => handleClick("facebook")}
+                onClick={toggleShowShareMenu}
                 className="w-max border-2 border-white px-3 py-1.5 bg-white text-sm rounded-lg flex items-center justify-center font-medium cursor-pointer hover:bg-sky-50 transition-colors"
             >
                 Udostepnij
@@ -162,6 +166,26 @@ export default function MenuLeftBar({ likedPhotoIds, photoId, Likes, Desc }) {
                     />
                 </svg>
             </button>
+            <div
+                className={`flex flex-col items-start justify-center pl-3 transition-all ${
+                    showShareMenu
+                        ? "flex flex-col h-20 w-32 scale-100"
+                        : "h-0 w-0 scale-0"
+                }`}
+            >
+                <button
+                    onClick={() => handleClick("facebook")}
+                    className="px-2 py-0.5 bg-blue-500 text-white rounded-lg text-sm"
+                >
+                    Facebook
+                </button>
+                <button
+                    onClick={() => handleClick("twitter")}
+                    className="px-2 py-0.5 bg-black text-white rounded-lg text-sm mt-3"
+                >
+                    Twitter "X"
+                </button>
+            </div>
             <p className="w-max border-2 border-white px-3 py-1.5 bg-white text-sm rounded-lg flex items-center justify-center font-medium cursor-pointer hover:bg-green-50 transition-colors">
                 Pobierz Zdjęcie
                 <svg
