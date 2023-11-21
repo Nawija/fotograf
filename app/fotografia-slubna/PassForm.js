@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function PassForm() {
+export default function PassForm({ msgError }) {
     const router = useRouter();
     const [pass, setPass] = useState();
 
@@ -38,17 +38,20 @@ export default function PassForm() {
     };
 
     return (
-        <div className="ml-3 mt-12 text-center">
-            <p className="text-lg font-medium mb-2">Wpisz Hasło:</p>
-            <div className="flex items-center justify-center">
+        <div className="text-center">
+            <p className="text-lg font-medium mb-2 lg:text-gray-800 text-white">
+                Wpisz Hasło:
+            </p>
+            <p className="text-red-600 text-sm">{msgError}</p>
+            <div className="flex items-center justify-center lg:shadow-xl">
                 <input
                     type="text"
-                    className="py-1.5 rounded-l-lg pl-2 hover:bg-gray-50 focus:bg-gray-50 transition-colors"
+                    className="py-1.5 rounded-l-lg pl-2 hover:bg-gray-50 focus:bg-gray-50 transition-colors border"
                     value={pass}
                     onInput={handleInputChange}
                 />
                 <button
-                    className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-2.5 px-3 rounded-r-lg"
+                    className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-3 px-3 rounded-r-lg"
                     onClick={handlePassSend}
                 >
                     <svg

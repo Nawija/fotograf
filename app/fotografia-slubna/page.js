@@ -5,10 +5,13 @@ import PassForm from "./PassForm";
 
 const handlePassGet = async () => {
     try {
-        const res = await fetch("https://x1-git-main-nawija.vercel.app/api/passFetchingData", {
-            method: "GET",
-            cache: "no-store",
-        });
+        const res = await fetch(
+            "https://x1-git-main-nawija.vercel.app/api/passFetchingData",
+            {
+                method: "GET",
+                cache: "no-store",
+            }
+        );
         if (!res.ok) {
             throw new Error("Failed fetch pass DB");
         }
@@ -27,10 +30,17 @@ export default async function FotografiaSlubna() {
 
     if (!PassGet)
         return (
-            <div className="ml-3 mt-12 flex items-center justify-center h-full">
+            <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
                 <PassForm />
             </div>
         );
+    if (PassGet && FotografiaSlubna.data.allAa121223s.length === 0 )
+        return (
+            <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
+                <PassForm msgError={"Błedne Hasło"} />
+            </div>
+        );
+
     let photos = FotografiaSlubna.data.allAa121223s[0].img;
 
     return (
