@@ -23,6 +23,7 @@ export async function GET(request: Request) {
         zip.file(`${download.photoId}.${download.type}`, download.data);
     });
     const photoZip = await zip.generateAsync({ type: "blob" });
+    
     return new Response(photoZip, {
         status: 200,
         headers: {
