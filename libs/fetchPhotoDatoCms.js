@@ -1,4 +1,4 @@
-const fetchPhotoDatoCms = async () => {
+const fetchPhotoDatoCms = async (queryFetchDatoCms) => {
     const res = await fetch("https://graphql.datocms.com/", {
         next: { revalidate: 60 },
         method: "POST",
@@ -8,11 +8,10 @@ const fetchPhotoDatoCms = async () => {
             Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
         },
         body: JSON.stringify({
-            query: `{ reportazZChrztu { img { id url } } }`,
+            query: `{ ${queryFetchDatoCms} { img { id url } } }`,
         }),
     });
-    const datoCms = await res.json();
-    return datoCms;
+    return await res.json();
 };
 
 export default fetchPhotoDatoCms;

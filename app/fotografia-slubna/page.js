@@ -1,19 +1,32 @@
-import { notFound } from "next/navigation";
 import fetchPhotoDatoCms from "../../libs/fetchPhotoDatoCms";
-
 import Photo from "./Photo";
 
-export default async function FotografiaSlubna({ reportazZChrztu }) {
-    const FotografiaSlubna = await fetchPhotoDatoCms(reportazZChrztu);
-    console.log(FotografiaSlubna);
-    if (!FotografiaSlubna) return notFound();
+export default async function FotografiaSlubna() {
+    let queryFetchDatoCms = "";
 
-    const photos = FotografiaSlubna.data.reportazZChrztu.img;
+    const handleButtonClick = async () => {
+        const FotografiaSlubna = await fetchPhotoDatoCms(queryFetchDatoCms);
 
-    return (
-        <div className="ml-3 mt-12">
-            {" "}
-            <Photo photos={photos} />{" "}
-        </div>
-    );
+        if (!FotografiaSlubna.data) {
+            return (
+                <div className="ml-3 mt-12">
+                    <input
+                        type="text"
+                        onChange={(e) => queryFetchDatoCms(e.target.value)}
+                    />
+                    <button onClick={handleButtonClick}>Fetch Data</button>
+                </div>
+            );
+        }
+
+        const photos = FotografiaSlubna.data.reportazZChrztu.img;
+
+        return (
+            <div className="ml-3 mt-12">
+                <Photo photos={photos} />
+            </div>
+        );
+    };
+
+    return handleButtonClick();
 }
