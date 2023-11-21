@@ -1,6 +1,6 @@
 const fetchPhotoDatoCms = async (queryFetchDatoCms) => {
     const res = await fetch("https://graphql.datocms.com/", {
-        next: { revalidate: 60 },
+        next: { revalidate: 600 },
         method: "POST",
         headers: {
             "Content-Type": "application/json",
