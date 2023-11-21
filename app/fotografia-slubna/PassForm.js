@@ -40,15 +40,15 @@ export default function PassForm() {
     return (
         <div className="ml-3 mt-12 text-center">
             <p className="text-lg font-medium mb-2">Wpisz Hasło:</p>
-            <div className="flex items-center justify-center my-auto">
+            <div className="flex items-center justify-center">
                 <input
                     type="text"
-                    className="py-1.5 rounded-l-lg pl-2"
+                    className="py-1.5 rounded-l-lg pl-2 hover:bg-gray-50 focus:bg-gray-50 transition-colors"
                     value={pass}
                     onInput={handleInputChange}
                 />
                 <button
-                    className="bg-gray-500 text-white uppercase text-[11px] font-medium py-2.5 px-3 rounded-r-lg"
+                    className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-2.5 px-3 rounded-r-lg"
                     onClick={handlePassSend}
                 >
                     <svg
