@@ -22,15 +22,15 @@ export default function PassForm() {
             console.error("Failed pass to add POST");
         }
         router.refresh();
-        setTimeout(() => {
-            fetch("/api/passFetchingData", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ pass }),
-            });
-        }, 1000);
+        // setTimeout(() => {
+        //     fetch("/api/passFetchingData", {
+        //         method: "DELETE",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({ pass }),
+        //     });
+        // }, 1000);
     };
 
     const handleInputChange = (e) => {
