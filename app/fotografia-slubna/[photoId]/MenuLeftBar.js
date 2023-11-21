@@ -104,16 +104,12 @@ export default function MenuLeftBar({
         }
     };
     const handleComDelete = async (commentId) => {
-        console.log("Deleting comment with ID:", commentId);
-
-        const response = await fetch(`/api/fotografia-slubna/${commentId}`, {
+        const response = await fetch(`/api/fotografia-slubna`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
         });
-
-        console.log("Response:", response);
 
         if (response.ok) {
             setComments(
@@ -271,9 +267,22 @@ export default function MenuLeftBar({
                 >
                     <button
                         onClick={() => handleComDelete(d._id)}
-                        className="bg-gradient-to-tr from-red-500 to-red-300 text-white group-hover:flex hidden opacity-0 group-hover:opacity-100 rounded-full px-2 absolute -top-2 -right-2"
+                        className="bg-gradient-to-tr from-red-500 to-red-300 text-white group-hover:flex opacity-0 group-hover:opacity-100 transition-all rounded-full p-1 absolute -top-2 -right-2"
                     >
-                        x
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={3}
+                            stroke="currentColor"
+                            className="w-2.5 h-2.5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
                     </button>
                     <p>{d.desc}</p>
                 </div>

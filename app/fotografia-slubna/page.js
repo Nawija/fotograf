@@ -25,14 +25,13 @@ export default async function FotografiaSlubna() {
 
     const FotografiaSlubna = await fetchPhotoDatoCms(queryFetchDatoCms);
 
-    if (!FotografiaSlubna.data)
+    if (!PassGet)
         return (
             <div className="ml-3 mt-12 flex items-center justify-center h-full">
                 <PassForm />
             </div>
         );
-    // reportazZChrztu
-    let photos = FotografiaSlubna.data[queryFetchDatoCms].img;
+    let photos = FotografiaSlubna.data.allAa121223s[0].img;
 
     return (
         <div className="ml-3 mt-12">

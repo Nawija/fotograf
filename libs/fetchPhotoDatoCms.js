@@ -8,7 +8,14 @@ const fetchPhotoDatoCms = async (queryFetchDatoCms) => {
             Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
         },
         body: JSON.stringify({
-            query: `{ ${queryFetchDatoCms} { img { id url } } }`,
+            query: `{
+                allAa121223s(filter: {title: {eq: "${queryFetchDatoCms}"}}) {
+                  img {
+                    id
+                    url
+                  }
+                }
+              }`,
         }),
     });
     return await res.json();
