@@ -12,7 +12,8 @@ const handlePassGet = async () => {
         if (!res.ok) {
             throw new Error("Failed fetch pass DB");
         }
-        return res.json();
+        let qfdc = await res.json();
+        return qfdc.Passwords[1].pass;
     } catch (error) {
         console.log("Error loading pass: ", error);
     }
@@ -20,7 +21,9 @@ const handlePassGet = async () => {
 
 export default async function FotografiaSlubna() {
     const PassGet = await handlePassGet();
-    let queryFetchDatoCms = PassGet.Passwords[PassGet.Passwords.length - 1].pass;
+
+    const queryFetchDatoCms = PassGet;
+    console.log(queryFetchDatoCms);
     const FotografiaSlubna = await fetchPhotoDatoCms(queryFetchDatoCms);
 
     if (!FotografiaSlubna.data)
@@ -29,8 +32,9 @@ export default async function FotografiaSlubna() {
                 <PassForm />
             </div>
         );
-
-    const photos = FotografiaSlubna.data.reportazZChrztu.img;
+    // reportazZChrztu
+    let photos = FotografiaSlubna.data[queryFetchDatoCms].img;
+    console.log(photos);
 
     return (
         <div className="ml-3 mt-12">
