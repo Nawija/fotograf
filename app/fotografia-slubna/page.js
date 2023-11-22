@@ -6,7 +6,7 @@ import PassForm from "./PassForm";
 const handlePassGet = async () => {
     try {
         const res = await fetch(
-            "https://x1-git-main-nawija.vercel.app/api/passFetchingData",
+            `${process.env.DOMAIN_URL}api/passFetchingData`,
             {
                 method: "GET",
                 cache: "no-store",
