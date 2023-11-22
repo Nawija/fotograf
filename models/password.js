@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const passwordSchema = new Schema({
     pass: String,
+    setPass: String,
     fetchDate: String,
 });
 

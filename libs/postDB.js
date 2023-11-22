@@ -9,6 +9,7 @@ const postDB = async (fetchUrl, fetchDate) => {
 
     if (response.ok) {
         fetchDate;
+        console.log(fetchDate);
     } else {
         console.error(`Failed ${fetchDate} to add POST`);
     }

@@ -6,12 +6,10 @@ import { useRouter } from "next/navigation";
 import postDB from "../../libs/postDB";
 
 export default function PassForm({ msgError }) {
-    // const router = useRouter();
     const [pass, setPass] = useState();
-    console.log(pass);
 
     const fetchUrl = "/api/passFetchingData";
-    let fetchDate = pass;
+    const fetchDate = pass;
 
     // const handlePassSend = async () => {
     //     const response = await fetch("/api/passFetchingData", {

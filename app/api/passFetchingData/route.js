@@ -3,9 +3,9 @@ import connectMongoDB from "../../../libs/mongodb";
 import Password from "../../../models/password";
 
 export async function POST(request) {
-    const { pass, fetchDate } = await request.json();
+    const { pass, setPass, fetchDate } = await request.json();
     await connectMongoDB();
-    await Password.create({ pass, fetchDate });
+    await Password.create({ pass, setPass, fetchDate });
     return NextResponse.json({ message: "Pass dodany" }, { status: 201 });
 }
 
@@ -16,9 +16,9 @@ export async function GET() {
 }
 
 export async function DELETE(request) {
-    const { pass, fetchDate } = await request.json();
+    const { pass, setPass, fetchDate } = await request.json();
     await connectMongoDB();
-    await Password.deleteMany({ pass, fetchDate });
+    await Password.deleteMany({ pass, setPass, fetchDate });
     return NextResponse.json({ message: "Like usuniety" }, { status: 200 });
 }
 
