@@ -5,7 +5,7 @@ import MenuBar from "./MenuBar";
 const fetchLikesDB = async () => {
     try {
         const res = await fetch(
-            "https://x1-git-main-nawija.vercel.app/api/strefa-klienta",
+            `${process.env.DOMAIN_URL}api/strefa-klienta`,
             {
                 method: "GET",
                 cache: "no-store",
