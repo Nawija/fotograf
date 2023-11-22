@@ -3,35 +3,41 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import postDB from "../../libs/postDB";
+
 export default function PassForm({ msgError }) {
-    const router = useRouter();
+    // const router = useRouter();
     const [pass, setPass] = useState();
+    console.log(pass);
 
-    const handlePassSend = async () => {
-        const response = await fetch("/api/passFetchingData", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ pass }),
-        });
+    const fetchUrl = "/api/passFetchingData";
+    let fetchDate = pass;
 
-        if (response.ok) {
-            pass;
-        } else {
-            console.error("Failed pass to add POST");
-        }
-        router.refresh();
-        setTimeout(() => {
-            fetch("/api/passFetchingData", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ pass }),
-            });
-        }, 1000);
-    };
+    // const handlePassSend = async () => {
+    //     const response = await fetch("/api/passFetchingData", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ pass }),
+    //     });
+
+    //     if (response.ok) {
+    //         pass;
+    //     } else {
+    //         console.error("Failed pass to add POST");
+    //     }
+    //     router.refresh();
+    //     setTimeout(() => {
+    //         fetch("/api/passFetchingData", {
+    //             method: "DELETE",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ pass }),
+    //         });
+    //     }, 1000);
+    // };
 
     const handleInputChange = (e) => {
         setPass(e.target.value);
@@ -47,12 +53,13 @@ export default function PassForm({ msgError }) {
                 <input
                     type="text"
                     className="py-1.5 rounded-l-lg pl-2 hover:bg-gray-50 focus:bg-gray-50 transition-colors border"
+                    inputmode="numeric"
                     value={pass}
                     onInput={handleInputChange}
                 />
                 <button
                     className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-3 px-3 rounded-r-lg"
-                    onClick={handlePassSend}
+                    onClick={() => postDB(fetchUrl, fetchDate)}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
