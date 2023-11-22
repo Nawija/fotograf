@@ -15,9 +15,9 @@ export default function PhotoId({
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (e.key === "ArrowLeft") {
-                router.push(`/fotografia-slubna/${nextPhotoId}`);
+                router.push(`/strefa-klienta/${nextPhotoId}`);
             } else if (e.key === "ArrowRight") {
-                router.push(`/fotografia-slubna/${prevPhotoId}`);
+                router.push(`/strefa-klienta/${prevPhotoId}`);
             }
         };
 
@@ -31,12 +31,12 @@ export default function PhotoId({
         "p-2 border font-semibold rounded-lg bg-gray-100 text-gray-900 absolute top-[80%] lg:top-1/2 hover:bg-white hover:text-red-600 transition-colors";
 
     return (
-        <div className="flex items-start justify-center w-full mt-12 lg:mt-0">
+        <div className="flex items-start justify-center w-full mt-4 lg:mt-0">
             <div
-                className={`p-1 lg:p-6 flex items-center justify-center text-center mx-auto top-0 left-0 h-full w-full relative`}
+                className={`p-1 flex items-center justify-center text-center mx-auto top-0 left-0 h-full w-full relative`}
             >
                 <Link
-                    href={`/fotografia-slubna/${nextPhotoId}`}
+                    href={`/strefa-klienta/${nextPhotoId}`}
                     className={`${arrowBtn} lg:left-2 left-0`}
                 >
                     <svg
@@ -55,7 +55,7 @@ export default function PhotoId({
                     </svg>
                 </Link>
                 <div
-                    className="w-full min-h-[55vh] max-h-[55vh] lg:min-h-[86vh] lg:max-h-[86vh] relative flex items-center justify-center overflow-hidden -z-10 object-fill"
+                    className="w-full min-h-[55vh] max-h-[55vh] lg:min-h-[83vh] lg:max-h-[83vh] relative flex items-center justify-center overflow-hidden -z-10 object-fill"
                 >
                     <img
                         className="w-full lg:w-auto h-auto object-fill"
@@ -64,7 +64,7 @@ export default function PhotoId({
                     />
                 </div>
                 <Link
-                    href={`/fotografia-slubna/${prevPhotoId}`}
+                    href={`/strefa-klienta/${prevPhotoId}`}
                     className={`${arrowBtn} lg:right-2 right-0`}
                 >
                     <svg

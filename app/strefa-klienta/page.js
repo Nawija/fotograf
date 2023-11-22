@@ -1,52 +1,50 @@
-import { notFound } from "next/navigation";
-import Photo from "./Photo";
-import MenuBar from "./MenuBar";
+import fetchPhotoDatoCms from "../../libs/fetchPhotoDatoCms";
 
-const fetchLikesDB = async () => {
+import Photo from "./Photo";
+import PassForm from "./PassForm";
+
+const handlePassGet = async () => {
     try {
         const res = await fetch(
-            `${process.env.DOMAIN_URL}api/strefa-klienta`,
+            `${process.env.DOMAIN_URL}api/passFetchingData`,
             {
                 method: "GET",
                 cache: "no-store",
             }
         );
         if (!res.ok) {
-            throw new Error("Failed fetch likes DB");
+            throw new Error("Failed fetch pass DB");
         }
-        return res.json();
+        let qfdc = await res.json();
+        return qfdc.Passwords[0].pass;
     } catch (error) {
-        console.log("Error loading Likes: ", error);
+        console.log("Error loading pass: ", error);
     }
 };
 
-const fetchPhotoDatoCms = async () => {
-    const res = await fetch("https://graphql.datocms.com/", {
-        next: { revalidate: 60 },
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-            query: "{ reportazZChrztu { img { id url } } }",
-        }),
-    });
-    const FotografiaSlubna = await res.json();
-    return FotografiaSlubna;
-};
+export default async function FotografiaSlubna() {
+    const PassGet = await handlePassGet();
+    const queryFetchDatoCms = PassGet;
 
-export default async function Strefa() {
-    const Likes = await fetchLikesDB();
-    const FotografiaSlubna = await fetchPhotoDatoCms();
-    if (!FotografiaSlubna) return notFound();
-    const photos = FotografiaSlubna.data.reportazZChrztu.img;
+    const FotografiaSlubna = await fetchPhotoDatoCms(queryFetchDatoCms);
+    if (queryFetchDatoCms === undefined)
+        return (
+            <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
+                <PassForm />
+            </div>
+        );
+    if (PassGet && FotografiaSlubna.data.allAa121223s.length === 0)
+        return (
+            <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
+                <PassForm msgError={"Błedne Hasło"} />
+            </div>
+        );
+
+    let photos = FotografiaSlubna.data.allAa121223s[0].img;
 
     return (
-        <div className="flex flex-col items-start justify-center mt-3 mb-20 max-w-screen-2xl mx-auto relative">
-            <MenuBar photos={photos} Likes={Likes} />
-            <Photo photos={photos} Likes={Likes} />
+        <div className="ml-3 mt-12">
+            <Photo photos={photos} />
         </div>
     );
 }

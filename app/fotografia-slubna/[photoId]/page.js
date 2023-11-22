@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import PhotoId from "./PhotoId";
-import MenuLeftBar from "./MenuLeftBar";
+import BtnActions from "./BtnActions";
 
 const fetchDescDB = async () => {
     try {
         const res = await fetch(
-            `${process.env.DOMAIN_URL}api/fotografia-slubna`,
+            "https://x1-git-main-nawija.vercel.app/api/fotografia-slubna",
             {
                 method: "GET",
                 cache: "no-store",
@@ -22,7 +22,7 @@ const fetchDescDB = async () => {
 const deleteDescDB = async () => {
     try {
         const res = await fetch(
-            `${process.env.DOMAIN_URL}fotografia-slubna`,
+            "https://x1-git-main-nawija.vercel.app/api/fotografia-slubna",
             {
                 method: "DELETE",
                 cache: "no-store",
@@ -40,7 +40,7 @@ const deleteDescDB = async () => {
 const fetchLikesDB = async () => {
     try {
         const res = await fetch(
-            `${process.env.DOMAIN_URL}api/strefa-klienta`,
+            "https://x1-git-main-nawija.vercel.app/api/strefa-klienta",
             {
                 method: "GET",
                 cache: "no-store",
@@ -89,14 +89,14 @@ export default async function PhotoPage({ params: { photoId } }) {
     const nextPhotoId = photos[nextPhotoIndex].id;
     const prevPhotoId = photos[prevPhotoIndex].id;
     return (
-        <div className="flex lg:flex-row flex-col max-w-screen-2xl mx-auto mb-20">
+        <div className="flex flex-col max-w-screen-2xl mx-auto mb-20">
             <PhotoId
                 photos={photos}
                 photoIndex={photoIndex}
                 nextPhotoId={nextPhotoId}
                 prevPhotoId={prevPhotoId}
             />
-            <MenuLeftBar
+            <BtnActions
                 photos={photos}
                 photoIndex={photoIndex}
                 DeleteDesc={DeleteDesc}

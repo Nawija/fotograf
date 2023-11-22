@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
             <div>
                 <Categories />
             </div>
-            <div className="flex-1 lg:ml-2">{children}</div>
+            <div className="flex-1">{children}</div>
         </main>
     );
 }

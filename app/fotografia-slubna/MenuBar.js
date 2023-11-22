@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const LinkStyle =
     "transition-colors py-1.5 text-white px-3 w-max text-sm bg-gray-500 rounded-xl mx-2 hover:bg-gray-200 transition-colors hover:text-red-900";
+    
 
 export default function MenuBar({ photos, Likes }) {
     return (
@@ -19,7 +20,7 @@ export default function MenuBar({ photos, Likes }) {
             >
                 Pobierz wszystko
             </Link>
-            {console.log(Likes.Likes)}
+            {console.log("XXXXXXXXXXXXXX "+ Likes)}
             <Link
                 href={`/api/pobierz-zdjecia-ulubione/?images=${encodeURIComponent(
                     JSON.stringify(Likes.Likes)
