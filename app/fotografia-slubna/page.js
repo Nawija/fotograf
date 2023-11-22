@@ -27,14 +27,13 @@ export default async function FotografiaSlubna() {
     const queryFetchDatoCms = PassGet;
 
     const FotografiaSlubna = await fetchPhotoDatoCms(queryFetchDatoCms);
-
-    if (!PassGet)
+    if (queryFetchDatoCms === undefined)
         return (
             <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
                 <PassForm />
             </div>
         );
-    if (PassGet && FotografiaSlubna.data.allAa121223s.length === 0 )
+    if (PassGet && FotografiaSlubna.data.allAa121223s.length === 0)
         return (
             <div className="lg:mt-12 flex items-center justify-center lg:h-[65vh] h-screen bg-gradient-to-tr from-black to-gray-800 lg:bg-none">
                 <PassForm msgError={"Błedne Hasło"} />
