@@ -3,9 +3,11 @@ import mongoose, { Schema } from "mongoose";
 const passwordSchema = new Schema({
     pass: String,
     setPass: String,
-    fetchDate: String,
+    fetchPostDate: String,
+    fetchDeleteDate: String,
 });
 
-const Password = mongoose.models.Password || mongoose.model("Password", passwordSchema);
+const Password =
+    mongoose.models.Password || mongoose.model("Password", passwordSchema);
 
 export default Password;

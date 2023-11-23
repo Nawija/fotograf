@@ -3,39 +3,27 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import postDB from "../../libs/postDB";
+import fetchPostDB from "../../libs/mongoDB/fetchPostDB";
+import fetchDeleteDB from "../../libs/mongoDB/fetchDeleteDB";
 
 export default function PassForm({ msgError }) {
     const [pass, setPass] = useState();
+    const router = useRouter();
 
-    const fetchUrl = "/api/passFetchingData";
-    const fetchDate = pass;
+    const fetchPostUrl = "/api/passData";
+    const fetchPostDate = pass;
+    const fetchDeleteUrl = "/api/passData";
+    const fetchDeleteDate = pass;
 
-    // const handlePassSend = async () => {
-    //     const response = await fetch("/api/passFetchingData", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ pass }),
-    //     });
-
-    //     if (response.ok) {
-    //         pass;
-    //     } else {
-    //         console.error("Failed pass to add POST");
-    //     }
-    //     router.refresh();
-    //     setTimeout(() => {
-    //         fetch("/api/passFetchingData", {
-    //             method: "DELETE",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({ pass }),
-    //         });
-    //     }, 1000);
-    // };
+    const handlePassSend = async () => {
+        fetchPostDB(fetchPostUrl, fetchPostDate);
+        router.refresh();
+        console.log(`XXX`);
+        setTimeout(() => {
+            fetchDeleteDB(fetchDeleteUrl, fetchDeleteDate);
+            console.log(`YYY`);
+        }, 3000);
+    };
 
     const handleInputChange = (e) => {
         setPass(e.target.value);
@@ -57,7 +45,7 @@ export default function PassForm({ msgError }) {
                 />
                 <button
                     className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-3 px-3 rounded-r-lg"
-                    onClick={() => postDB(fetchUrl, fetchDate)}
+                    onClick={handlePassSend}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

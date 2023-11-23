@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-export default function Photo({ photos }) {
+export default function Photo({ FotografiaSlubna }) {
+    let photos = FotografiaSlubna.data.allAa121223s[0].img;
     return (
         <div className="flex flex-wrap">
             {photos.map((photo) => (
