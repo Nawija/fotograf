@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 .btn-main {
     background-color: #9b0303;
@@ -38,7 +39,7 @@
     }
 }
 .likeHeartAnim {
-    animation: likeHeartAnim .3s ease-in-out alternate-reverse;
+    animation: likeHeartAnim 0.3s ease-in-out alternate-reverse;
 }
 @keyframes scaleAnimation {
     0% {
