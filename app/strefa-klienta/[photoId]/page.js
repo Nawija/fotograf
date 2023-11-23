@@ -73,7 +73,6 @@ const fetchPhotoDatoCms = async () => {
 };
 
 export default async function PhotoPage({ params: { photoId } }) {
-    const DeleteDesc = await deleteDescDB();
     const Desc = await fetchDescDB();
     const Likes = await fetchLikesDB();
     const datoCms = await fetchPhotoDatoCms(photoId);
@@ -99,7 +98,6 @@ export default async function PhotoPage({ params: { photoId } }) {
             <MenuLeftBar
                 photos={photos}
                 photoIndex={photoIndex}
-                DeleteDesc={DeleteDesc}
                 likedPhotoIds={likedPhotoIds}
                 photoId={photoId}
                 Likes={Likes}
