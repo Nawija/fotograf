@@ -16,11 +16,13 @@ export default function PassForm({ msgError }) {
     // const fetchDeleteDate = pass;
 
     const handlePassSend = async () => {
-        fetchPostDB(fetchPostUrl, fetchPostDate);
-        router.refresh();
-        setTimeout(() => {
-            fetchDeleteDB(fetchDeleteUrl, fetchPostDate);
-        }, 2000);
+        if (true) {
+            fetchPostDB(fetchPostUrl, fetchPostDate);
+            router.refresh();
+            setTimeout(() => {
+                fetchDeleteDB(fetchDeleteUrl, fetchPostDate);
+            }, 2000);
+        }
     };
 
     const handleInputChange = (e) => {
@@ -32,8 +34,10 @@ export default function PassForm({ msgError }) {
             <p className="text-lg font-medium mb-2 text-gray-800">
                 Wpisz Hasło:
             </p>
+                <p className="text-red-600 text-sm opacityAnimation">
+                    {msgError}
+                </p>
             <div className="flex items-center justify-center shadow-xl">
-            <p className="text-red-600 text-sm opacityAnimation">{msgError}</p>
                 <input
                     type="text"
                     className="py-1.5 rounded-l-lg pl-2 hover:bg-gray-50 focus:bg-gray-50 transition-colors border"
@@ -42,7 +46,7 @@ export default function PassForm({ msgError }) {
                     onInput={handleInputChange}
                 />
                 <button
-                title="Wyślij"
+                    title="Wyślij"
                     className="bg-gray-500 hover:bg-gray-700 transition-colors text-white uppercase text-[11px] font-medium py-3 px-3 rounded-r-lg"
                     onClick={handlePassSend}
                 >
