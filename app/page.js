@@ -13,12 +13,12 @@ export default function Home() {
 
     return (
         <>
-            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative mb-6 mt-10 lg:mt-0">
+            <section className="flex justify-center lg:py-20 py-2 opacityAnimation relative mb-6 mt-6 lg:mt-0">
                 <div className="flex justify-center  ">
                     <div className="flex flex-col items-center justify-center">
                         <div className="flex flex-col max-w-7xl justify-center items-center space-y-3 w-full ">
                             <div className="flex flex-col md:items-start items-center justify-center  space-y-3 px-8 text-center ">
-                                <h1 className="text-3xl w-max md:text-7xl font-bold relative mb-10 lg:mb-6">
+                                <h1 className="text-3xl w-max md:text-7xl font-bold relative mb-4 lg:mb-6">
                                     Odkryj Sztukę Fotografii
                                     <br /> Fotograf Siedlce
                                     <span className="text-base md:text-xl absolute w-max -bottom-6 right-6 font-light">
@@ -62,7 +62,7 @@ export default function Home() {
                                         />
                                     </div>
                                 </div>
-                                <div className="lg:w-60 h-96 absolute top-0 lg:static -z-10 w-full lg:flex overflow-hidden rounded-tl-[10rem] lg:rounded-xl shadow-xl ">
+                                <div className="lg:w-60 h-96 absolute top-0 lg:static -z-10 w-[97%] lg:flex overflow-hidden rounded-tl-[7rem] lg:rounded-xl shadow-xl ">
                                     <Image
                                         loading="eager"
                                         className={ImgClass}
