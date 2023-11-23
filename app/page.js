@@ -39,30 +39,30 @@ export default function Home() {
                                     />
                                 </div>
                                 <div className="flex flex-row lg:flex-col space-x-3 lg:space-y-6 items-center justify-center">
-                                    <div className=" lg:w-40 h-40 overflow-hidden absolute lg:static left-1 -rotate-12 lg:rotate-0 -bottom-16 rounded-xl shadow-xl ">
+                                    <div className=" lg:w-40 h-40 overflow-hidden absolute lg:static -left-1 -rotate-12 lg:rotate-0 -bottom-16 rounded-xl shadow-xl ">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
                                             style={{ animationDuration: "16s" }}
-                                            width={300}
-                                            height={500}
+                                            width={150}
+                                            height={150}
                                             src={s4Img}
                                             alt={heroImgAlt}
                                         />
                                     </div>
-                                    <div className="w-40 h-40 lg:h-48 absolute lg:static right-1 -bottom-16 overflow-hidden rounded-xl shadow-xl rotate-12 lg:rotate-0">
+                                    <div className="w-40 h-40 lg:h-48 absolute lg:static -right-1 -bottom-16 overflow-hidden rounded-xl shadow-xl rotate-12 lg:rotate-0">
                                         <Image
                                             loading="eager"
                                             className={ImgClass}
                                             style={{ animationDuration: "18s" }}
-                                            width={300}
-                                            height={500}
+                                            width={150}
+                                            height={150}
                                             src={s2Img}
                                             alt={heroImgAlt}
                                         />
                                     </div>
                                 </div>
-                                <div className="lg:w-60 h-96 absolute top-0 lg:static -z-10 w-[97%] lg:flex overflow-hidden rounded-tl-[7rem] lg:rounded-xl shadow-xl ">
+                                <div className="lg:w-60 h-96 absolute top-0 lg:static -z-10 w-full lg:flex overflow-hidden rounded-tl-[7rem] lg:rounded-xl shadow-xl ">
                                     <Image
                                         loading="eager"
                                         className={ImgClass}

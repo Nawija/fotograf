@@ -22,25 +22,15 @@ export default function Categories() {
 
     const pathname = usePathname();
     const categoriesLinks = [
-        { path: "fotografia-slubna", label: "Fotografia ślubna" },
-        { path: "reportaz-z-chrztu", label: "Reportaż z chrztu" },
-        { path: "fotografia-komunijna", label: "Fotografia komunijna" },
-        { path: "wieczory-panieńskie", label: "Wieczory panieńskie" },
-        { path: "studniówki", label: "Studniówki" },
-        { path: "18-urodziny", label: "18 - urodziny" },
-        { path: "sesje-indywidualne", label: "Sesje indywidualne" },
-        { path: "sesje-brzuszkowe", label: "Sesje brzuszkowe" },
-        { path: "fotografia-sportowa", label: "Fotografia sportowa" },
-        { path: "fotografia-klubowa", label: "Fotografia klubowa" },
-        { path: "zdjęcia-wizerunkowe", label: "Zdjęcia wizerunkowe" },
-        { path: "zdjęcia-przemysłowe", label: "Zdjęcia przemysłowe" },
-        { path: "zdjęcia-kulinarne", label: "Zdjęcia kulinarne" },
-        { path: "zdjęcia-motoryzacyjne", label: "Zdjęcia motoryzacyjne" },
-        { path: "zdjęcia-produktowe", label: "Zdjęcia produktowe" },
+        { path: "fotografia-slubna", label: "Pobierz zdjecia" },
+        { path: "reportaz-z-chrztu", label: "Pobierz ulubione" },
+        { path: "fotografia-komunijna", label: "Napisz komentarz" },
+        { path: "wieczory-panieńskie", label: "Wyślij Wiadomość" },
+        { path: "studniówki", label: "Udostępnij" },
     ];
     return (
         <div
-            className={`lg:flex items-center justify-start flex-col mt-12 text-start h-full lg:pl-0 pr-2 w-52 hidden text-sm border-r-2 transition-all relative`}
+            className={`lg:flex items-center justify-start flex-col mt-12 text-start h-full lg:pl-0 pr-2 w-52 hidden text-[15px] transition-all relative menuTransformX`}
         >
             <div
                 className={`flex flex-col h-full ${
@@ -51,7 +41,7 @@ export default function Categories() {
                     <Link
                         key={categoriesLink.path}
                         href={`/${categoriesLink.path}`}
-                        className={`transition-colors p-1.5 mt-0.5 ${
+                        className={`transition-colors font-medium text-gray-800 p-1.5 mt-0.5 ${
                             pathname === `/${categoriesLink.path}`
                                 ? "text-red-600 underline underline-offset-2"
                                 : "hover:text-red-600"

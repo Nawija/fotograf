@@ -39,7 +39,18 @@
     }
 }
 .likeHeartAnim {
-    animation: likeHeartAnim 0.3s ease-in-out alternate-reverse;
+    animation: likeHeartAnim 3s ease-in-out;
+}
+@keyframes menuTransformX {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100vh);
+    }
+}
+.menuTransformX {
+    animation: menuTransformX 0.3s ease-in-out alternate-reverse;
 }
 @keyframes scaleAnimation {
     0% {

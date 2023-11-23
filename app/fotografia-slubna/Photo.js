@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Photo({ photos, Likes }) {
-    const router = useRouter();
     let [likedPhotos, setLikedPhotos] = useState([]);
 
     useEffect(() => {
@@ -30,7 +28,6 @@ export default function Photo({ photos, Likes }) {
                 setLikedPhotos((prevLikedPhotos) =>
                     prevLikedPhotos.filter((id) => id !== photoId)
                 );
-                router.refresh();
             } else {
                 console.error("Failed to remove like");
             }
@@ -48,7 +45,6 @@ export default function Photo({ photos, Likes }) {
                     ...prevLikedPhotos,
                     photoId,
                 ]);
-                router.refresh();
             } else {
                 console.error("Failed to add like");
             }
