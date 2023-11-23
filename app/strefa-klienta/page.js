@@ -6,7 +6,7 @@ import PassForm from "./PassForm";
 const handlePassGet = async () => {
     try {
         const res = await fetch(
-            `${process.env.DOMAIN_URL}api/passFetchingData`,
+            `${process.env.DOMAIN_URL}api/passData`,
             {
                 method: "GET",
                 cache: "no-store",
@@ -16,7 +16,7 @@ const handlePassGet = async () => {
             throw new Error("Failed fetch pass DB");
         }
         let qfdc = await res.json();
-        return qfdc.Passwords[0].fetchDate;
+        return qfdc.Passwords[0].fetchPostDate;
     } catch (error) {
         console.log("Error loading pass: ", error);
     }

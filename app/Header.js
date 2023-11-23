@@ -44,11 +44,11 @@ export default function Header() {
 
     return (
         <header
-            className={`text-gray-800 fixed top-0 left-0 w-full px-5 z-50 transition-colors duration-300 ${
+            className={`text-gray-800 fixed top-0 left-0 w-full px-5 z-[999] transition-colors duration-300 ${
                 pathName === "/" && !isScrolled ? "" : "bg-gray-100 shadow-lg"
             }`}
         >
-            <div className="max-w-screen-2xl lg:p-5 py-3 mx-auto flex items-center justify-between">
+            <div className="max-w-screen-2xl lg:p-5 py-1 mx-auto flex items-center justify-between">
                 <Link
                     href="/"
                     className="flex font-medium items-center justify-center text-gray-900"

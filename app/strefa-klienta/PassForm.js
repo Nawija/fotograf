@@ -13,16 +13,14 @@ export default function PassForm({ msgError }) {
     const fetchPostUrl = "/api/passData";
     const fetchPostDate = pass;
     const fetchDeleteUrl = "/api/passData";
-    const fetchDeleteDate = pass;
+    // const fetchDeleteDate = pass;
 
     const handlePassSend = async () => {
         fetchPostDB(fetchPostUrl, fetchPostDate);
         router.refresh();
-        console.log(`XXX`);
         setTimeout(() => {
-            fetchDeleteDB(fetchDeleteUrl, fetchDeleteDate);
-            console.log(`YYY`);
-        }, 3000);
+            fetchDeleteDB(fetchDeleteUrl, fetchPostDate);
+        }, 2000);
     };
 
     const handleInputChange = (e) => {

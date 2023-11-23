@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
                 />
                 <EffectBg />
                 <Header />
-                <main className="lg:mt-20 mt-10 min-h-screen w-full overflow-hidden">
+                <main className="lg:mt-20 mt-10 min-h-screen w-full overflow-hidden relative">
                     {children}
                 </main>
                 <Footer />

@@ -1,14 +1,14 @@
-const fetchDeleteDB = async (fetchDeleteUrl, fetchDeleteDate) => {
+const fetchDeleteDB = async (fetchDeleteUrl, fetchPostDate) => {
     const res = await fetch(`${fetchDeleteUrl}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ fetchDeleteDate }),
+        body: JSON.stringify({ fetchPostDate }),
     });
 
     if (!res.ok) {
-        console.error(`Failed DELETE ${fetchDeleteDate}`);
+        console.error(`Failed DELETE ${fetchPostDate}`);
     }
 };
 

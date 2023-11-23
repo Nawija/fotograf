@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Adm() {
     return (
         <>
-            <div className="lg:w-full w-80 h-1/2 rotate-45 rounded-xl bg-gradient-to-tr -z-10 from-gray-400/90 absolute top-0 left-0 shadow-xl" />
+            
             <div className="flex items-center justify-center h-[80vh] ">
                 <div className="flex flex-col items-center justify-center">
                     <div className="flex flex-col  max-w-7xl justify-center items-center space-y-3 w-full ">
@@ -23,7 +23,14 @@ export default function Adm() {
                                 target="_blank"
                                 className="btn-main py-2 px-4"
                             >
-                                Wiadomości
+                                MongoDB
+                            </Link>
+                            <Link
+                                href="/adm"
+                                target="_blank"
+                                className="btn-main py-2 px-4"
+                            >
+                                Hosting
                             </Link>
                         </div>
                     </div>
