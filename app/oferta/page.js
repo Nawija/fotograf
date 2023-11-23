@@ -27,7 +27,7 @@ export default function OfertaPage() {
 
     return (
         <div className="flex flex-wrap items-start justify-center max-w-screen-2xl mx-auto relative mt-[45vh] md:mt-[60vh] opacityAnimation mb-20">
-            <div className="p-2 fixed left-1/2 -translate-x-1/2 top-[60%] -translate-y-1/2 z-10 animate-bounce rounded-full">
+            <div className="p-2 fixed lg:left-1/2 left-[45%] -translate-x-1/2 lg:top-[60%] top-[45%] -translate-y-1/2 z-10 animate-bounce rounded-full text-white lg:text-black">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -43,7 +43,7 @@ export default function OfertaPage() {
                     />
                 </svg>
             </div>
-            <div className="w-full h-[30vh] fixed left-0 top-[4.5rem] lg:-z-10">
+            <div className="w-full h-[30vh] fixed left-0 top-12 lg:top-[4.5rem] lg:-z-10">
                 <Image src={HeroImg} />
                 <div className="absolute left-1/2 lg:left-[66%] top-[73%] lg:top-[100%] text-white text-center lg:text-start lg:text-black lg:text-4xl lg:font-normal font-semibold -translate-x-1/2 -translate-y-1/2 text-lg tracking-wide">
                     <p>Wypełnij Formularz</p>
